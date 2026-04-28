@@ -2,173 +2,143 @@ import React from 'react';
 import './Projects.css';
 
 const Projects = () => {
+  const featuredProject = {
+    title: 'Magnified Systems',
+    status: 'Currently Building',
+    description:
+      'Developing a real-time impact severity detection system using IMU sensor data and machine learning.',
+    bullets: [
+      'Working with ESP32 and IMU sensors for real-time motion data',
+      'Building a machine learning model to predict impact severity (1–100 scale)',
+      'Designing a helmet-mounted prototype for real-world testing'
+    ],
+    technologies: ['ESP32', 'IMU Sensors', 'Machine Learning', 'Embedded Prototyping'],
+    primaryCtaLabel: 'Follow Progress',
+    primaryCtaUrl: 'https://www.instagram.com/magnifiedsystems/',
+    secondaryCtaLabel: 'View Related ML Work',
+    secondaryCtaUrl: 'https://github.com/AurickAnwar/Impact-Analysis-ML'
+  };
+
   const projects = [
-    // Python Projects (5)
     {
       id: 1,
-      title: "Basketball Shot Predictor",
-      description: "Built a Basketball shot predictor that analyzes a video frame by frame and uses object detection to calculate the speed of the ball and distance of ball to the hoop. I used a Pytorch BCE loss model that gives the probability of the shot going in and also I display the accuracy of each test run.",
-      image: "/ShotPredictor.png",
+      title: 'Basketball Shot Predictor',
+      description: 'Tracks ball trajectory in video and predicts make probability using computer vision and a PyTorch model.',
+      image: '/ShotPredictor.png',
       technologies: ['YOLOv11', 'OpenCV', 'PyTorch'],
-      githubUrl: "https://github.com/AurickAnwar/Basketball-Shot-Predictor",
-      demoUrl: "https://www.youtube.com/watch?v=B-A5uHzQIgI"
-      
-      
+      projectUrl: 'https://github.com/AurickAnwar/Basketball-Shot-Predictor'
     },
     {
       id: 2,
-      title: "AI Computer Control System with Hand Gesture Tracking",
-      description: "Built a real-time computer vision system that uses hand gesture recognition to control a computer. Leveraging MediaPipe and OpenCV, the system tracks hand landmarks to enable touchless interaction, including volume control, cursor movement, and gesture-based commands.",
-      image: "/HandGestureControl.jpg",
+      title: 'Hand Gesture Computer Control',
+      description: 'Enables touchless cursor and system controls by mapping hand landmarks to real-time gesture commands.',
+      image: '/HandGestureControl.jpg',
       technologies: ['MediaPipe', 'OpenCV', 'PyAutoGUI'],
-      githubUrl: "https://github.com/AurickAnwar/Real-Time-Hand-Gesture-Controller",
-      demoUrl: "https://www.youtube.com/watch?v=87QTKgbuSko&"
-      
-      
-     
-      
-      
+      projectUrl: 'https://github.com/AurickAnwar/Real-Time-Hand-Gesture-Controller'
     },
-
-    // ⭐ Updated project (Assembly file instead of GitHub)
     {
       id: 3,
-      title: "Car and Pedestrian Detection",
-      description: "Designed an AI detection car system using OpenCv on python and made an algorithm to display a counter for when each car/pedestrian passes by.",
-      image: "/Car Detection.png",
-      technologies: ["Python", "OpenCV", "NumPy"],
-      githubUrl: "https://github.com/AurickAnwar/Python-Projects-w-OpenCV/blob/main/Pedestrian%20and%20Car%20Detection%20System.py",
-      reportUrl: "https://docs.google.com/document/d/1CIpkooX8EVqJkrTwUZ0tDHImPGGr1oqaoGuMrc3TTdc/edit?tab=t.0"
-     
-      
-      
-      
+      title: 'Impact Severity ML Model',
+      description: 'Predicts crash impact severity from IMU streams to support injury-risk assessment workflows.',
+      image: '/CrashSeverity.jpg',
+      technologies: ['PyTorch', 'Python', 'IMU Data'],
+      projectUrl: 'https://github.com/AurickAnwar/Impact-Analysis-ML'
     },
-
-    // CAD Projects (3)
     {
       id: 4,
-      title: "Google Home",
-      description: "Programmed a google home replica on OpenCv python and speech recognition. It was able to run and we could say anything to the system and they would return a response.",
-      image: "/STT.png",
-      technologies: ["Python", "TextToSpeech", "OpenCV", "SpeechToText"],
-      githubUrl: "https://github.com/AurickAnwar/Google-Home-Replica"
-      
+      title: 'Car and Pedestrian Detection',
+      description: 'Detects and counts pedestrians and cars in real time with optimized OpenCV pipelines for video analysis.',
+      image: '/Car Detection.png',
+      technologies: ['Python', 'OpenCV', 'NumPy'],
+      projectUrl: 'https://github.com/AurickAnwar/Python-Projects-w-OpenCV/blob/main/Pedestrian%20and%20Car%20Detection%20System.py'
     },
     {
       id: 5,
-      title: "Impact Severity Machine Learning Model",
-      description: "Built a machine learning model using PyTorch to predict the severity of an impact based on the accelerometer data. The model was able to predict the severity of an impact with an accuracy of 96.4%. This model I plan on implementing in my startup for Magnified Systems.",
-      image: "/CrashSeverity.jpg",
-      technologies: ["Python", "PyTorch", "Machine Learning", "IMU Sensor Data"],
-      githubUrl: "https://github.com/AurickAnwar/Impact-Analysis-ML"
-      
-      
-      
+      title: 'Google Home Replica',
+      description: 'Built a replica of the Google Home using Speech-to-Text APIs.',
+      image: '/STT.png',
+      technologies: ['OpenCV', 'Google Cloud', 'Speech-to-Text'],
+      projectUrl: '/https://github.com/AurickAnwar/Google-Home-Replica'
     },
     {
-      id: 6,
-      title: "Facial Recognition",
-      description: "Built a facial recognition system using OpenCv on python and Haar Cascades. It was able to detect faces in real-time and display the bounding box of the face. Also was able to recognize the number of faces present and the FPS of the camera.",
-      image: "/FacialRecognition.jpg",
-      technologies: ["Python", "OpenCV", "Haar Cascades"],
-      githubUrl: "https://github.com/AurickAnwar/Facial-Recognition-with-OpenCV"
-      
-      
-    },
-
-    // Arduino Projects (3)
-    {
-      id: 7,
-      title: "Push Button LED PCB",
-      description: "Designed a push button LED PCB using KiCad",
-      image: "/LEDPCB.png",
-      technologies: ["KiCad", "PCB", "LEDs", "Push Button"],
-      pcbUrl: "/ledlight.kicad_pcb",
-      schematicUrl: "/ledlight.kicad_sch"
-      
-    },
-      
-    {
-      id: 8,
-      title: "Scissor Bot",
-      description: "Built an extension grabber mechanism that can retrieve items from the floor. Two push buttons are used to control the gripper's open and close state. We 3D modelled and built a scissor mechanism to extend the gripper's reach.",
-      image: "/ScissorsBot.jpg",
-      technologies: ["Arduino", "Autodesk Inventor", "3D Printing"],
-      demoUrl: "https://www.youtube.com/watch?v=-lGsktbrvjc"
-      
+      id:6,
+      title: 'Push Button LED PCB',
+      description: 'Designed and prototyped a push-button LED PCB workflow from schematic to board layout in KiCad.',
+      image: '/LEDPCB.png',
+      technologies: ['KiCad', 'PCB Design', 'Hardware Prototyping'],
+      projectUrl: '/ledlight.kicad_pcb'
     },
     {
-      id: 9,
-      title: "Robotic Arm Gripper (CAD)",
-      description: "Used a base plate end effector and added a gripper to the end of the arm to pick up and drop off objects.",
-      image: "/RoboticGrip.png",
-      technologies: ["Autodesk Inventor", "Assembly", "Constraints"],
-      assemblyUrl: "/Robotic-Gripper.iam"
-      
-      
+      id:7,
+      title: 'Scissor Bot',
+      description: 'Built a 3D-modelled scissor-extension gripper to retrieve items, controlled by two push buttons.',
+      image: '/ScissorsBot.jpg',
+      technologies: ['3D Printing', 'Arduino', 'Servo Motors', 'Push Buttons'],
+      projectUrl: 'https://www.youtube.com/watch?v=-lGsktbrvjc'
+    },
+    {
+      id:8,
+      title: 'Arduino Smart Home System',
+      description: 'Detects and counts road actors in real time with optimized OpenCV pipelines for video analysis.',
+      image: '/SmartHome.jpg',
+      technologies: ['Fusion 360', 'Arduino', 'Ultrasonic Sensor', 'Buzzer','LEDs'],
+      projectUrl: 'https://www.youtube.com/watch?v=fv0qXOx49z8System.py'
     }
+    
   ];
 
   return (
     <section className="projects section">
       <div className="container">
         <div className="section-header fade-in-up">
-          <h1 className="section-title">My Projects</h1>
-          <p className="section-subtitle">
-            Here are some of my recent projects that showcase my skills and experience
+          <h1 className="section-title">Projects</h1>
+          <p className="section-subtitle projects-intro">
+            Here are some of my recent projects that showcase my skills and experience.
           </p>
         </div>
 
+        <div className="featured-project fade-in-up">
+          <div className="featured-content">
+            <p className="featured-label">Featured Project</p>
+            <h2>{featuredProject.title}</h2>
+            <p className="featured-status">{featuredProject.status}</p>
+            <p>{featuredProject.description}</p>
+            <ul className="featured-list">
+              {featuredProject.bullets.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+            <div className="project-technologies">
+              {featuredProject.technologies.map((tech) => (
+                <span key={tech} className="tech-tag">{tech}</span>
+              ))}
+            </div>
+            <div className="featured-actions">
+              <a href={featuredProject.primaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn">
+                {featuredProject.primaryCtaLabel}
+              </a>
+              <a href={featuredProject.secondaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+                {featuredProject.secondaryCtaLabel}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="projects-divider" />
+
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <div key={project.id} className="project-card fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+            <a
+              key={project.id}
+              href={project.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-card fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <div className="project-image">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                />
-                
-                <div className="project-overlay">
-                  <div className="project-links">
-                    {project.stlUrl && (
-                      <a href={project.stlUrl} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <i className="icon">🧩</i> STL File
-                      </a>
-                    )}
-                    {project.assemblyUrl && (
-                      <a href={project.assemblyUrl} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <i className="icon">🧩</i> Assembly File
-                      </a>
-                    )}
-                    {project.demoUrl && (
-                      <a href={project.demoUrl} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <i className="icon">🎥</i> Demo
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a href={project.githubUrl} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <i className="icon">📁</i> GitHub
-                      </a>
-                    )}
-
-                    {project.reportUrl && (
-                      <a href={project.reportUrl} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <i className="icon">📄</i> Report
-                      </a>
-                    )}
-                    {project.pcbUrl && (
-                      <a href={project.pcbUrl} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <i className="icon">🗲</i> PCB
-                      </a>
-                    )}
-                    {project.schematicUrl && (
-                      <a href={project.schematicUrl} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <i className="icon">🗲</i> Schematic
-                      </a>
-                    )}
-                  </div>
-                </div>
+                <img src={project.image} alt={project.title} />
+                <div className="project-image-overlay" />
               </div>
 
               <div className="project-content">
@@ -180,9 +150,11 @@ const Projects = () => {
                     <span key={idx} className="tech-tag">{tech}</span>
                   ))}
                 </div>
-
+                <span className="project-link">
+                  View Project
+                </span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

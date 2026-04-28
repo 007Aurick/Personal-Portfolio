@@ -5,14 +5,12 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #030712;
-  color: #E2F3FF;
-  line-height: 1.6;
+  background-color: #0a0a0a;
+  color: #eaeaea;
+  line-height: 1.65;
 }
 
 code {
@@ -27,23 +25,26 @@ html {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
-/* Scrollbar – deep ocean */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a1628;
+  background: #111111;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #38BDF8, #0EA5E9);
-  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(181, 122, 16, 0.75), rgba(181, 122, 16, 0.45));
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #38BDF8;
+  background: #b57a10;
 }
+
+
+
+

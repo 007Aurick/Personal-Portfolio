@@ -6,11 +6,11 @@ const seededRandom = (seed) => {
   return x - Math.floor(x);
 };
 
-const MICRO_DOT_COLS = 24;
-const MICRO_DOT_ROWS = 18;
-const NODE_COUNT = 55;
-const NEAREST_NEIGHBORS = 5; // Connect to 5 nearest = all nodes in one network
-const LINE_ANIMATION_DURATION = 10.2; // Synced with typewriter finish time (68 chars × 150ms)
+const MICRO_DOT_COLS = 14;
+const MICRO_DOT_ROWS = 10;
+const NODE_COUNT = 24;
+const NEAREST_NEIGHBORS = 3;
+const LINE_ANIMATION_DURATION = 8;
 
 const HeroOceanBg = () => {
   const { microDots, nodes, connections } = useMemo(() => {
@@ -78,7 +78,6 @@ const HeroOceanBg = () => {
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Dense micro-dot field */}
         <g className="hero-micro-dots">
           {microDots.map((d) => (
             <circle
@@ -90,7 +89,6 @@ const HeroOceanBg = () => {
             />
           ))}
         </g>
-        {/* Connecting lines – draw in as dots pulse */}
         <g className="hero-connections">
           {connections.map(({ from, to, delay, duration }, idx) => (
             <line
@@ -108,7 +106,6 @@ const HeroOceanBg = () => {
             />
           ))}
         </g>
-        {/* Glowing nodes */}
         <g className="hero-nodes">
           {nodes.map((node) => (
             <circle

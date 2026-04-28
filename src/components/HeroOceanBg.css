@@ -1,16 +1,10 @@
-/* Hero background – deep blue neural network aesthetic (no AI circle) */
 .hero-ocean-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background: linear-gradient(
-    180deg,
-    rgba(25, 45, 70, 0.4) 0%,
-    rgba(15, 30, 50, 0.6) 40%,
-    rgba(10, 20, 40, 0.85) 100%
-  );
+  background: radial-gradient(circle at 65% 50%, rgba(181, 122, 16, 0.06) 0%, transparent 45%);
 }
 
 .hero-network-svg {
@@ -18,23 +12,21 @@
   height: 100%;
 }
 
-/* Dense micro-dot field – tiny dark blue dots, wavy grid */
 .hero-micro-dots circle {
-  fill: rgba(30, 58, 90, 0.7);
+  fill: rgba(181, 122, 16, 0.1);
 }
 
 .hero-micro-dot {
-  opacity: 0.8;
+  opacity: 0.45;
 }
 
-/* Lines draw in once, then stay visible */
 .hero-line {
-  stroke: #38BDF8;
-  stroke-width: 0.15;
+  stroke: rgba(181, 122, 16, 0.6);
+  stroke-width: 0.09;
   fill: none;
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
-  stroke-opacity: 0.22;
+  stroke-opacity: 0.16;
   animation: heroLineDraw 10.2s ease-out forwards;
 }
 
@@ -50,10 +42,9 @@
   }
 }
 
-/* Glowing nodes – AI blue, varying brightness */
 .hero-node {
-  fill: #38BDF8;
-  filter: drop-shadow(0 0 2px rgba(56, 189, 248, 0.8));
+  fill: #b57a10;
+  filter: drop-shadow(0 0 1px rgba(181, 122, 16, 0.5));
   transform-origin: center;
   animation: heroNodePulse ease-in-out infinite;
 }
@@ -70,3 +61,7 @@
     transform: scale(1.12);
   }
 }
+
+
+
+

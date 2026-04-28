@@ -29,7 +29,7 @@ const Navbar = () => {
       <div className="container">
         <div className="nav-content">
           <Link to="/" className="nav-logo" onClick={closeMobileMenu}>
-            Aurick Anwar
+            AURICK
           </Link>
           
           <div className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>

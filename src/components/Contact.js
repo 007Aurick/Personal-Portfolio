@@ -47,25 +47,26 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: "📧",
+      icon: "✦",
       title: "Email",
       value: "aurick.anwar2260biga@gmail.com",
       link: "mailto:aurick.anwar2260biga@gmail.com"
     },
+    
     {
-      icon: "📱",
-      title: "Phone",
-      value: "+1 (647) 869-8095",
-      link: "tel:+16478698095"
-    },
-    {
-      icon: "📍",
+      icon: "✦",
       title: "Location",
       value: "Toronto, Ontario, Canada",
       link: "#"
     },
     {
-      icon: "📷",
+      icon: "✦",
+      title: "Twitter",
+      value: "x.com/007Aurick",
+      link: "https://x.com/007Aurick"
+    },
+    {
+      icon: "✦",
       title: "Instagram",
       value: "instagram.com/_aur1ck/",
       link: "https://www.instagram.com/_aur1ck/"
@@ -78,7 +79,7 @@ const Contact = () => {
         <div className="section-header fade-in-up">
           <h1 className="section-title">Get In Touch</h1>
           <p className="section-subtitle">
-            Have a project in mind or want to collaborate? I'd love to hear from you!
+            Have a project in mind or want to collaborate? I&apos;d love to hear from you!
           </p>
         </div>
 
@@ -86,8 +87,7 @@ const Contact = () => {
           <div className="contact-info fade-in-up">
             <h3>Let's Connect</h3>
             <p>
-              I'm always interested in new opportunities and exciting projects. 
-              Whether you have a question or just want to say hi, feel free to reach out!
+              I&apos;m open to internships, collaborations, and product-focused engineering opportunities.
             </p>
             
             <div className="contact-details">

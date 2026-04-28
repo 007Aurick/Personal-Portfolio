@@ -1,0 +1,109 @@
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.intro-grid-scan {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(212, 191, 130, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 191, 130, 0.03) 1px, transparent 1px);
+  background-size: 38px 38px;
+  opacity: 0.12;
+  animation: scanShift 2.8s ease-in-out infinite alternate;
+}
+
+.intro-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(213, 166, 60, 0.45);
+  box-shadow: 0 0 12px rgba(213, 166, 60, 0.35);
+  animation-name: floatParticle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: min(840px, 92vw);
+  margin: 0 auto;
+  color: #d5a63c;
+}
+
+.intro-lines {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  letter-spacing: 0.06em;
+  width: 100%;
+}
+
+.intro-line {
+  font-size: clamp(0.85rem, 2vw, 1.08rem);
+  color: rgba(213, 166, 60, 0.95);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.intro-cursor {
+  display: inline-block;
+  color: #f0ce70;
+  margin-top: 0.3rem;
+  animation: blinkCursor 0.85s steps(1) infinite;
+}
+
+.intro-logo {
+  margin-top: 1.15rem;
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d8ad49;
+  background: linear-gradient(180deg, #f0ce70 0%, #d5a63c 36%, #b57a10 72%, #7c530f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 22px rgba(181, 122, 16, 0.38);
+}
+
+.intro-enter-btn {
+  margin-top: 2rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 10px;
+  border: 1px solid #c69326;
+  background: linear-gradient(180deg, #f0ce70 0%, #d5a63c 36%, #b57a10 72%, #7c530f 100%);
+  color: #120d02;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.intro-enter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(181, 122, 16, 0.4);
+}
+
+@keyframes blinkCursor {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+
+@keyframes floatParticle {
+  0%, 100% { transform: translateY(0px); opacity: 0.22; }
+  50% { transform: translateY(-8px); opacity: 0.58; }
+}
+
+@keyframes scanShift {
+  from { opacity: 0.08; }
+  to { opacity: 0.16; }
+}
