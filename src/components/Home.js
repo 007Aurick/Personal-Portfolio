@@ -45,7 +45,7 @@ const Home = () => {
             </h2>
             </h2>
             <p className="home-description">
-              Engineering has been my pathway since middle school. I'm passionate about robotics, automation and, building  technologies that can help improve the lives of others. Whether it's aerospace concepts, embedded systems, or mechanical design, I'm always looking for new opportunities to learn and grow. My goals for this year is to learn PCB design and get good with ROS2. 
+              Engineering has been my pathway since middle school. I'm passionate about robotics, automation and, building  technologies that can help improve the lives of others. I'm always looking for new opportunities to learn and grow and planning to pursue future pathways in Robotics, AI, and Automation. My goals for this year is to get really good with Machine Learning and start learning ROS2.
             </p>
             <div className="home-buttons">
               <Link to="/projects" className="btn">
