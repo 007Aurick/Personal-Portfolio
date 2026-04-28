@@ -6,6 +6,17 @@ const Projects = () => {
     // Python Projects (5)
     {
       id: 1,
+      title: "Basketball Shot Predictor",
+      description: "Built a Basketball shot predictor that analyzes a video frame by frame and uses object detection to calculate the speed of the ball and distance of ball to the hoop. I used a Pytorch BCE loss model that gives the probability of the shot going in and also I display the accuracy of each test run.",
+      image: "/ShotPredictor.png",
+      technologies: ['YOLOv11', 'OpenCV', 'PyTorch'],
+      githubUrl: "https://github.com/AurickAnwar/Basketball-Shot-Predictor",
+      demoUrl: "https://www.youtube.com/watch?v=B-A5uHzQIgI"
+      
+      
+    },
+    {
+      id: 2,
       title: "AI Computer Control System with Hand Gesture Tracking",
       description: "Built a real-time computer vision system that uses hand gesture recognition to control a computer. Leveraging MediaPipe and OpenCV, the system tracks hand landmarks to enable touchless interaction, including volume control, cursor movement, and gesture-based commands.",
       image: "/HandGestureControl.jpg",
@@ -14,15 +25,6 @@ const Projects = () => {
       demoUrl: "https://www.youtube.com/watch?v=87QTKgbuSko&"
       
       
-    },
-    {
-      id: 2,
-      title: "Real-Time Object Detection System",
-      description: "Built a real-time object detection system using OpenCv on python and YOLOv11. It was able to detect objects in real-time and display the bounding box of the object.",
-      image: "/ObjectDetection.jpg",
-      technologies: ["Python", "OpenCV", "YOLOv11"],
-      githubUrl: "https://github.com/AurickAnwar/Object-Detection-AI-Model-With-YOLOv11",
-      demoUrl: "https://www.youtube.com/watch?v=tMhFKEpCgqw"
      
       
       
@@ -46,31 +48,32 @@ const Projects = () => {
     // CAD Projects (3)
     {
       id: 4,
-      title: "Facial Recognition",
-      description: "Built a facial recognition system using OpenCv on python and Haar Cascades. It was able to detect faces in real-time and display the bounding box of the face. Also was able to recognize the number of faces present and the FPS of the camera.",
-      image: "/FacialRecognition.jpg",
-      technologies: ["Python", "OpenCV", "Haar Cascades"],
-      githubUrl: "https://github.com/AurickAnwar/Facial-Recognition-with-OpenCV"
-      
-      
-    },
-    {
-      id: 5,
       title: "Google Home",
       description: "Programmed a google home replica on OpenCv python and speech recognition. It was able to run and we could say anything to the system and they would return a response.",
       image: "/STT.png",
       technologies: ["Python", "TextToSpeech", "OpenCV", "SpeechToText"],
       githubUrl: "https://github.com/AurickAnwar/Google-Home-Replica"
       
-      
     },
     {
-      id: 6,
+      id: 5,
       title: "Impact Severity Machine Learning Model",
       description: "Built a machine learning model using PyTorch to predict the severity of an impact based on the accelerometer data. The model was able to predict the severity of an impact with an accuracy of 96.4%. This model I plan on implementing in my startup for Magnified Systems.",
       image: "/CrashSeverity.jpg",
       technologies: ["Python", "PyTorch", "Machine Learning", "IMU Sensor Data"],
       githubUrl: "https://github.com/AurickAnwar/Impact-Analysis-ML"
+      
+      
+      
+    },
+    {
+      id: 6,
+      title: "Facial Recognition",
+      description: "Built a facial recognition system using OpenCv on python and Haar Cascades. It was able to detect faces in real-time and display the bounding box of the face. Also was able to recognize the number of faces present and the FPS of the camera.",
+      image: "/FacialRecognition.jpg",
+      technologies: ["Python", "OpenCV", "Haar Cascades"],
+      githubUrl: "https://github.com/AurickAnwar/Facial-Recognition-with-OpenCV"
+      
       
     },
 
