@@ -2,14 +2,14 @@ import React from 'react';
 import './Projects.css';
 
 const Projects = () => {
-  const featuredProject = {
+  const magnifiedProject = {
     title: 'Magnified Systems',
     status: 'Currently Building',
     description:
       'Developing a real-time impact severity detection system using IMU sensor data and machine learning.',
     bullets: [
       'Working with ESP32 and IMU sensors for real-time motion data',
-      'Building a machine learning model to predict impact severity (1–100 scale)',
+      'Building a machine learning model to predict impact severity (1-100 scale)',
       'Designing a helmet-mounted prototype for real-world testing'
     ],
     technologies: ['ESP32', 'IMU Sensors', 'Machine Learning', 'Embedded Prototyping'],
@@ -18,6 +18,26 @@ const Projects = () => {
     secondaryCtaLabel: 'View Related ML Work',
     secondaryCtaUrl: 'https://github.com/AurickAnwar/Impact-Analysis-ML'
   };
+
+  const autonomousProject = {
+    title: 'Autonomous Self-Driving Vehicle with CARLA',
+    status: 'Currently Building',
+    description:
+      'Developing a vision-based autonomous driving system in CARLA that performs real-time perception and decision-making from simulated sensor data.',
+    bullets: [
+      'Integrating YOLO-based object detection for pedestrians, vehicles, and traffic signals',
+      'Extracting spatial features such as distance estimation and lane positioning from camera input',
+      'Designing a Neural Network Cross-Entropy Loss decision model to predict driving actions like accelerate, brake, and turn',
+      
+    ],
+    technologies: ['CARLA', 'YOLO', 'PyTorch', 'Computer Vision', 'Autonomous Systems', 'Simulation'],
+    progressStatus: 'Object Detection pipeline in development',
+    pipeline: 'Camera \u2192 YOLO \u2192 Decision Model \u2192 Vehicle Control',
+    progressPercent: 5,
+    
+  };
+
+  
 
   const projects = [
     {
@@ -100,26 +120,59 @@ const Projects = () => {
         <div className="featured-project fade-in-up">
           <div className="featured-content">
             <p className="featured-label">Featured Project</p>
-            <h2>{featuredProject.title}</h2>
-            <p className="featured-status">{featuredProject.status}</p>
-            <p>{featuredProject.description}</p>
+            <h2>{magnifiedProject.title}</h2>
+            <p className="featured-status">{magnifiedProject.status}</p>
+            <p>{magnifiedProject.description}</p>
             <ul className="featured-list">
-              {featuredProject.bullets.map((point) => (
+              {magnifiedProject.bullets.map((point) => (
                 <li key={point}>{point}</li>
               ))}
             </ul>
             <div className="project-technologies">
-              {featuredProject.technologies.map((tech) => (
+              {magnifiedProject.technologies.map((tech) => (
                 <span key={tech} className="tech-tag">{tech}</span>
               ))}
             </div>
             <div className="featured-actions">
-              <a href={featuredProject.primaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn">
-                {featuredProject.primaryCtaLabel}
+              <a href={magnifiedProject.primaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn">
+                {magnifiedProject.primaryCtaLabel}
               </a>
-              <a href={featuredProject.secondaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
-                {featuredProject.secondaryCtaLabel}
+              <a href={magnifiedProject.secondaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+                {magnifiedProject.secondaryCtaLabel}
               </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="featured-project fade-in-up">
+          <div className="featured-content">
+            <p className="featured-label">Featured Project</p>
+            <h2>{autonomousProject.title}</h2>
+            <p className="featured-status">{autonomousProject.status}</p>
+            <p>{autonomousProject.description}</p>
+            <ul className="featured-list">
+              {autonomousProject.bullets.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+            <div className="project-technologies">
+              {autonomousProject.technologies.map((tech) => (
+                <span key={tech} className="tech-tag">{tech}</span>
+              ))}
+            </div>
+            <div className="featured-progress-block" role="status" aria-live="polite">
+              <div className="featured-progress-header">
+                <span className="featured-progress-title">Progress</span>
+                <span className="featured-progress-percent">{autonomousProject.progressPercent}%</span>
+              </div>
+              <div className="featured-progress-track" aria-label={`Progress ${autonomousProject.progressPercent}%`}>
+                <span
+                  className="featured-progress-fill"
+                  style={{ '--progress-width': `${autonomousProject.progressPercent}%` }}
+                />
+              </div>
+              <p className="featured-progress-status">{autonomousProject.progressStatus}</p>
+              <p className="featured-pipeline"><strong>Pipeline:</strong> {autonomousProject.pipeline}</p>
             </div>
           </div>
         </div>

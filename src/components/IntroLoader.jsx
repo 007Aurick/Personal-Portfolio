@@ -127,7 +127,7 @@ const IntroLoader = ({ onComplete }) => {
           animate={{ opacity: showLogo ? 1 : 0, y: showLogo ? 0 : 8 }}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
         >
-          AURICK
+          AURICK ANWAR
         </motion.h2>
 
         <motion.button
