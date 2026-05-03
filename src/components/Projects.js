@@ -31,9 +31,11 @@ const Projects = () => {
       
     ],
     technologies: ['CARLA', 'YOLO', 'PyTorch', 'Computer Vision', 'Autonomous Systems', 'Simulation'],
-    progressStatus: 'Object Detection pipeline in development',
+    justCompleted:
+      'Officially set up CARLA, spawned a vehicle and did basic movements with the car',
+    progressStatus: 'Real-Time Object Detection Pipeline with YOLOv11',
     pipeline: 'Camera \u2192 YOLO \u2192 Decision Model \u2192 Vehicle Control',
-    progressPercent: 5,
+    progressPercent: 15,
     
   };
 
@@ -171,7 +173,14 @@ const Projects = () => {
                   style={{ '--progress-width': `${autonomousProject.progressPercent}%` }}
                 />
               </div>
-              <p className="featured-progress-status">{autonomousProject.progressStatus}</p>
+              <div className="featured-just-completed">
+                <span className="featured-just-completed-label">Just completed</span>
+                <p className="featured-just-completed-text">{autonomousProject.justCompleted}</p>
+              </div>
+              <div className="featured-developing">
+                <span className="featured-developing-label">Next Step</span>
+                <p className="featured-developing-text">{autonomousProject.progressStatus}</p>
+              </div>
               <p className="featured-pipeline"><strong>Pipeline:</strong> {autonomousProject.pipeline}</p>
             </div>
           </div>

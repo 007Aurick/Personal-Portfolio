@@ -15,7 +15,7 @@ const Home = () => {
             <div className="home-role-lines">
               <p>Founder @Magnified Systems</p>
               <p>
-                Incoming SWE Intern @{' '}
+                SWE Intern @{''}
                 <a
                   href="https://hermesai.ca/"
                   target="_blank"
