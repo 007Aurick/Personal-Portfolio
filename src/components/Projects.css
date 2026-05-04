@@ -286,6 +286,8 @@
   font-weight: 600;
   transition: all 0.3s ease;
   margin-top: auto;
+  text-decoration: none;
+  align-self: start;
 }
 
 .project-card:hover .project-link {

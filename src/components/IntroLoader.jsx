@@ -18,6 +18,7 @@ const IntroLoader = ({ onComplete }) => {
   const [charIndex, setCharIndex] = useState(0);
   const [showLogo, setShowLogo] = useState(false);
   const [showCta, setShowCta] = useState(false);
+  const [showTapHint, setShowTapHint] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
 
   const particles = useMemo(
@@ -71,6 +72,15 @@ const IntroLoader = ({ onComplete }) => {
       clearTimeout(ctaTimer);
     };
   }, [lineIndex]);
+
+  useEffect(() => {
+    if (!showCta) {
+      setShowTapHint(false);
+      return undefined;
+    }
+    const t = setTimeout(() => setShowTapHint(true), 480);
+    return () => clearTimeout(t);
+  }, [showCta]);
 
   const handleEnter = () => {
     setIsExiting(true);
@@ -130,16 +140,31 @@ const IntroLoader = ({ onComplete }) => {
           AURICK ANWAR
         </motion.h2>
 
-        <motion.button
-          type="button"
-          className="intro-enter-btn"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: showCta ? 1 : 0, y: showCta ? 0 : 10 }}
-          transition={{ duration: 0.45, ease: 'easeInOut' }}
-          onClick={handleEnter}
-        >
-          View Portfolio
-        </motion.button>
+        <div className="intro-cta-wrap">
+          <motion.button
+            type="button"
+            className="intro-enter-btn"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: showCta ? 1 : 0, y: showCta ? 0 : 10 }}
+            transition={{ duration: 0.45, ease: 'easeInOut' }}
+            onClick={handleEnter}
+          >
+            View Portfolio
+          </motion.button>
+          <motion.div
+            className="intro-tap-hint"
+            aria-hidden
+            initial={{ opacity: 0, y: 8 }}
+            animate={{
+              opacity: showCta && showTapHint && !isExiting ? 1 : 0,
+              y: showCta && showTapHint && !isExiting ? 0 : 8
+            }}
+            transition={{ duration: 0.38, ease: 'easeOut' }}
+          >
+            <span className="intro-tap-finger">👆</span>
+            <span className="intro-tap-hint-label">click here</span>
+          </motion.div>
+        </div>
       </div>
     </motion.div>
   );

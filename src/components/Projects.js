@@ -83,12 +83,13 @@ const Projects = () => {
       projectUrl: '/https://github.com/AurickAnwar/Google-Home-Replica'
     },
     {
-      id:6,
+      id: 6,
       title: 'Push Button LED PCB',
       description: 'Designed and prototyped a push-button LED PCB workflow from schematic to board layout in KiCad.',
       image: '/LEDPCB.png',
       technologies: ['KiCad', 'PCB Design', 'Hardware Prototyping'],
-      projectUrl: '/ledlight.kicad_pcb'
+      projectUrl: '/ledlight.kicad_pcb',
+      downloadFilename: 'ledlight.kicad_pcb'
     },
     {
       id:7,
@@ -190,11 +191,8 @@ const Projects = () => {
 
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <a
+            <div
               key={project.id}
-              href={project.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className="project-card fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
@@ -212,11 +210,17 @@ const Projects = () => {
                     <span key={idx} className="tech-tag">{tech}</span>
                   ))}
                 </div>
-                <span className="project-link">
+                <a
+                  className="project-link"
+                  href={project.projectUrl}
+                  {...(project.downloadFilename
+                    ? { download: project.downloadFilename }
+                    : { target: '_blank', rel: 'noopener noreferrer' })}
+                >
                   View Project
-                </span>
+                </a>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>

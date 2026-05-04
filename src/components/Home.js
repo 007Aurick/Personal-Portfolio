@@ -11,9 +11,9 @@ const Home = () => {
         <div className="home-content">
           <div className="home-text fade-in-up">
             <h1 className="home-title">AURICK ANWAR</h1>
-            <h3 className="home-subtitle">Mechatronics Engineering @ McMaster University</h3>
+            <h3 className="home-subtitle">Mechatronics Engineering @McMaster University</h3>
             <div className="home-role-lines">
-              <p>Founder @Magnified Systems</p>
+              <p>Founding Engineer @Magnified Systems</p>
               <p>
                 SWE Intern @{''}
                 <a
