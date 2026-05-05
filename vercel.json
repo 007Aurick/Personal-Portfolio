@@ -18,7 +18,7 @@
       }
     },
     {
-      "src": "/(.*\\.(png|jpg|jpeg|gif|svg|ico|pdf|mov|stl|iam))",
+      "src": "/(.*\\.(png|jpg|jpeg|gif|svg|ico|pdf|mov|mp4|webm|stl|iam))",
       "dest": "/$1",
       "headers": {
         "Cache-Control": "public, max-age=31536000"
