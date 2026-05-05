@@ -27,16 +27,16 @@ const Projects = () => {
     bullets: [
       'Integrating YOLO-based object detection for pedestrians, vehicles, and traffic signals',
       'Extracting spatial features such as distance estimation and lane positioning from camera input',
-      'Designing a Neural Network Cross-Entropy Loss decision model to predict driving actions like accelerate, brake, and turn',
-      
+      'Training a Neural Network Cross-Entropy Loss decision model after collecting CARLA driving data to predict actions like accelerate, brake, and turn',
+      'Overlaying live car data like speed, steering, throttle, and detection confidence onto the camera feed so we can easily monitor how the perception and control systems are performing in real time.',
     ],
     technologies: ['CARLA', 'YOLO', 'PyTorch', 'Computer Vision', 'Autonomous Systems', 'Simulation'],
     justCompleted:
-      'Officially set up CARLA, spawned a vehicle and did basic movements with the car',
-    progressStatus: 'Real-Time Object Detection Pipeline with YOLOv11',
-    pipeline: 'Camera \u2192 YOLO \u2192 Decision Model \u2192 Vehicle Control',
-    progressPercent: 15,
-    
+      'Integrated YOLO-based object detection for pedestrians, vehicles, and traffic signals',
+    progressStatus: 'Implementing CARLA API vehicle controls (left, right, straight, brake) and logging driving data for the decision model.',
+    pipeline: 'Camera \u2192 YOLO \u2192 CARLA API Vehicle Control \u2192 Data Logging \u2192 Decision Model',
+    progressPercent: 30,
+    demoVideo: '/SelfDrivingDemo.mp4',
   };
 
   
@@ -147,17 +147,32 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className="featured-project fade-in-up">
-          <div className="featured-content">
+        <div className="featured-project featured-project--split fade-in-up">
+          <div className="featured-split-header">
             <p className="featured-label">Featured Project</p>
             <h2>{autonomousProject.title}</h2>
             <p className="featured-status">{autonomousProject.status}</p>
+          </div>
+          <div className="featured-content featured-split-body">
             <p>{autonomousProject.description}</p>
             <ul className="featured-list">
               {autonomousProject.bullets.map((point) => (
                 <li key={point}>{point}</li>
               ))}
             </ul>
+          </div>
+          <div className="featured-media">
+            <video
+              className="featured-demo-video"
+              src={autonomousProject.demoVideo}
+              autoPlay
+              muted
+              playsInline
+              loop
+              aria-label="CARLA autonomous driving demo: perception overlay and vehicle view"
+            />
+          </div>
+          <div className="featured-split-tail">
             <div className="project-technologies">
               {autonomousProject.technologies.map((tech) => (
                 <span key={tech} className="tech-tag">{tech}</span>
