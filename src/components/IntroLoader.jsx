@@ -5,8 +5,6 @@ import './IntroLoader.css';
 const LINES = [
   'INITIALIZING AURICK.OS',
   'LOADING PROJECTS...',
-  'AI MODULE: ACTIVE',
-  'ROBOTICS MODULE: ACTIVE',
   'SYSTEM READY'
 ];
 
