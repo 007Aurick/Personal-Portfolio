@@ -32,10 +32,10 @@ const Projects = () => {
     ],
     technologies: ['CARLA', 'YOLO', 'PyTorch', 'Computer Vision', 'Autonomous Systems', 'Simulation'],
     justCompleted:
-      'Integrated YOLO-based object detection for pedestrians, vehicles, and traffic signals',
-    progressStatus: 'Implementing CARLA API vehicle controls (left, right, straight, brake) and logging driving data for the decision model.',
-    pipeline: 'Camera \u2192 YOLO \u2192 CARLA API Vehicle Control \u2192 Data Logging \u2192 Decision Model',
-    progressPercent: 30,
+      'Implemented Auto-pilot mode in CARLA that drives the vehicle autonomously and makes decisions (left, right, straight, brake) based on the camera input.',
+    progressStatus: 'Build a PyTorch model to predict the action of the car based on the camera input.',
+    pipeline: 'Camera \u2192 YOLO \u2192 CARLA API Vehicle Control \u2192 Decision Model',
+    progressPercent: 75,
     demoVideo: '/SelfDrivingDemo.mp4',
   };
 
