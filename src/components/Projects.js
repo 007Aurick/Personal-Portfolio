@@ -19,31 +19,21 @@ const Projects = () => {
     secondaryCtaUrl: 'https://github.com/AurickAnwar/Impact-Analysis-ML'
   };
 
-  const autonomousProject = {
-    title: 'Autonomous Self-Driving Vehicle with CARLA',
-    status: 'Currently Building',
-    description:
-      'Developing a vision-based autonomous driving system in CARLA that performs real-time perception and decision-making from simulated sensor data.',
-    bullets: [
-      'Integrating YOLO-based object detection for pedestrians, vehicles, and traffic signals',
-      'Extracting spatial features such as distance estimation and lane positioning from camera input',
-      'Training a Neural Network Cross-Entropy Loss decision model after collecting CARLA driving data to predict actions like accelerate, brake, and turn',
-      'Overlaying live car data like speed, steering, throttle, and detection confidence onto the camera feed so we can easily monitor how the perception and control systems are performing in real time.',
-    ],
-    technologies: ['CARLA', 'YOLO', 'PyTorch', 'Computer Vision', 'Autonomous Systems', 'Simulation'],
-    justCompleted:
-      'Implemented Auto-pilot mode in CARLA that drives the vehicle autonomously and makes decisions (left, right, straight, brake) based on the camera input.',
-    progressStatus: 'Build a PyTorch model to predict the action of the car based on the camera input.',
-    pipeline: 'Camera \u2192 YOLO \u2192 CARLA API Vehicle Control \u2192 Decision Model',
-    progressPercent: 75,
-    demoVideo: '/SelfDrivingDemo.mp4',
-  };
-
   
 
   const projects = [
     {
       id: 1,
+      title: 'Autonomous Self-Driving Vehicle with CARLA',
+      description:
+        'Developing a vision-based autonomous driving system in CARLA that performs real-time perception and decision-making from simulated sensor data.',
+      // Placeholder: replace this with your CARLA thumbnail image.
+      image: '/SelfDriving.png',
+      technologies: ['CARLA', 'YOLO', 'PyTorch'],
+      projectUrl: 'https://github.com/AurickAnwar/Autonomous-Self-Driving-Vehicle'
+    },
+    {
+      id: 2,
       title: 'Basketball Shot Predictor',
       description: 'Tracks ball trajectory in video and predicts make probability using computer vision and a PyTorch model.',
       image: '/ShotPredictor.png',
@@ -51,7 +41,7 @@ const Projects = () => {
       projectUrl: 'https://github.com/AurickAnwar/Basketball-Shot-Predictor'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Hand Gesture Computer Control',
       description: 'Enables touchless cursor and system controls by mapping hand landmarks to real-time gesture commands.',
       image: '/HandGestureControl.jpg',
@@ -59,7 +49,7 @@ const Projects = () => {
       projectUrl: 'https://github.com/AurickAnwar/Real-Time-Hand-Gesture-Controller'
     },
     {
-      id: 3,
+      id: 4,
       title: 'Impact Severity ML Model',
       description: 'Predicts crash impact severity from IMU streams to support injury-risk assessment workflows.',
       image: '/CrashSeverity.jpg',
@@ -67,15 +57,15 @@ const Projects = () => {
       projectUrl: 'https://github.com/AurickAnwar/Impact-Analysis-ML'
     },
     {
-      id: 4,
+      id: 5,
       title: 'Car and Pedestrian Detection',
       description: 'Detects and counts pedestrians and cars in real time with optimized OpenCV pipelines for video analysis.',
-      image: '/Car Detection.png',
+      image: '/Car%20Detection.png',
       technologies: ['Python', 'OpenCV', 'NumPy'],
       projectUrl: 'https://github.com/AurickAnwar/Python-Projects-w-OpenCV/blob/main/Pedestrian%20and%20Car%20Detection%20System.py'
     },
     {
-      id: 5,
+      id: 6,
       title: 'Google Home Replica',
       description: 'Built a replica of the Google Home using Speech-to-Text APIs.',
       image: '/STT.png',
@@ -83,7 +73,7 @@ const Projects = () => {
       projectUrl: '/https://github.com/AurickAnwar/Google-Home-Replica'
     },
     {
-      id: 6,
+      id: 7,
       title: 'Push Button LED PCB',
       description: 'Designed and prototyped a push-button LED PCB workflow from schematic to board layout in KiCad.',
       image: '/LEDPCB.png',
@@ -92,7 +82,7 @@ const Projects = () => {
       downloadFilename: 'ledlight.kicad_pcb'
     },
     {
-      id:7,
+      id: 8,
       title: 'Scissor Bot',
       description: 'Built a 3D-modelled scissor-extension gripper to retrieve items, controlled by two push buttons.',
       image: '/ScissorsBot.jpg',
@@ -100,7 +90,7 @@ const Projects = () => {
       projectUrl: 'https://www.youtube.com/watch?v=-lGsktbrvjc'
     },
     {
-      id:8,
+      id: 9,
       title: 'Arduino Smart Home System',
       description: 'Detects and counts road actors in real time with optimized OpenCV pipelines for video analysis.',
       image: '/SmartHome.jpg',
@@ -143,61 +133,6 @@ const Projects = () => {
               <a href={magnifiedProject.secondaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                 {magnifiedProject.secondaryCtaLabel}
               </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="featured-project featured-project--split fade-in-up">
-          <div className="featured-split-header">
-            <p className="featured-label">Featured Project</p>
-            <h2>{autonomousProject.title}</h2>
-            <p className="featured-status">{autonomousProject.status}</p>
-          </div>
-          <div className="featured-content featured-split-body">
-            <p>{autonomousProject.description}</p>
-            <ul className="featured-list">
-              {autonomousProject.bullets.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="featured-media">
-            <video
-              className="featured-demo-video"
-              src={autonomousProject.demoVideo}
-              autoPlay
-              muted
-              playsInline
-              loop
-              aria-label="CARLA autonomous driving demo: perception overlay and vehicle view"
-            />
-          </div>
-          <div className="featured-split-tail">
-            <div className="project-technologies">
-              {autonomousProject.technologies.map((tech) => (
-                <span key={tech} className="tech-tag">{tech}</span>
-              ))}
-            </div>
-            <div className="featured-progress-block" role="status" aria-live="polite">
-              <div className="featured-progress-header">
-                <span className="featured-progress-title">Progress</span>
-                <span className="featured-progress-percent">{autonomousProject.progressPercent}%</span>
-              </div>
-              <div className="featured-progress-track" aria-label={`Progress ${autonomousProject.progressPercent}%`}>
-                <span
-                  className="featured-progress-fill"
-                  style={{ '--progress-width': `${autonomousProject.progressPercent}%` }}
-                />
-              </div>
-              <div className="featured-just-completed">
-                <span className="featured-just-completed-label">Just completed</span>
-                <p className="featured-just-completed-text">{autonomousProject.justCompleted}</p>
-              </div>
-              <div className="featured-developing">
-                <span className="featured-developing-label">Next Step</span>
-                <p className="featured-developing-text">{autonomousProject.progressStatus}</p>
-              </div>
-              <p className="featured-pipeline"><strong>Pipeline:</strong> {autonomousProject.pipeline}</p>
             </div>
           </div>
         </div>
