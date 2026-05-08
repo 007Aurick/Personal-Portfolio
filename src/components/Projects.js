@@ -26,10 +26,10 @@ const Projects = () => {
       id: 1,
       title: 'Autonomous Self-Driving Vehicle with CARLA',
       description:
-        'Developing a vision-based autonomous driving system in CARLA that performs real-time perception and decision-making from simulated sensor data.',
+        'Developing an autonomous driving dashboard in CARLA that performs real-time object detection and decision making.',
       // Placeholder: replace this with your CARLA thumbnail image.
       image: '/SelfDriving.png',
-      technologies: ['CARLA', 'YOLO', 'PyTorch'],
+      technologies: ['CARLA', 'YOLO', 'PyTorch', 'OpenCV'],
       projectUrl: 'https://github.com/AurickAnwar/Autonomous-Self-Driving-Vehicle'
     },
     {
