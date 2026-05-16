@@ -4,6 +4,7 @@ import { spotifyPlaceholder } from '../data/spotifyPlaceholder';
 import {
   disconnectSpotify,
   getValidAccessToken,
+  startSpotifyLogin,
 } from '../utils/spotifyAuth';
 import { getClientId } from '../utils/spotifyConfig';
 import { consumeSpotifyOAuthError } from '../utils/spotifyErrors';
@@ -247,6 +248,24 @@ const HomeSpotify = () => {
     <section className="home-spotify fade-in-up" aria-label="Spotify music">
       <div className="home-spotify-wrap">
         {error && <p className="home-spotify-error">{error}</p>}
+        {process.env.NODE_ENV === 'development' && getClientId() && (
+          <div className="home-spotify-dev-token-hint">
+            <p>
+              <strong>Where the long string is:</strong> only in your browser <em>after</em> Spotify login — not in the
+              Spotify website. Click the button → approve Spotify → back on this site press <strong>F12</strong> →{' '}
+              <strong>Application</strong> tab → <strong>Session Storage</strong> → click this site&apos;s URL → row
+              key <code className="home-spotify-code">spotify_refresh_token</code> → copy the <strong>Value</strong> →
+              paste into Vercel as <code className="home-spotify-code">SPOTIFY_REFRESH_TOKEN</code>.
+            </p>
+            <button
+              type="button"
+              className="btn btn-outline spotify-mini-btn"
+              onClick={() => startSpotifyLogin().catch((e) => setError(e.message))}
+            >
+              Spotify login (dev — get refresh token)
+            </button>
+          </div>
+        )}
         {process.env.NODE_ENV === 'development' && configured && !publicFeed && (
           <p className="home-spotify-api-banner home-spotify-api-banner--solo">
             Local dev is showing <strong>placeholder</strong> Spotify data. Set{' '}

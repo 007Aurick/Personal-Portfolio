@@ -329,7 +329,7 @@ function OutsideEngineering() {
             </article>
 
             <div className="life-nba-bracket">
-              <h3 className="life-nba-bracket-main-title">NBA playoffs — bracket</h3>
+              <h3 className="life-nba-bracket-main-title">My NBA playoffs prediction bracket</h3>
               <div className="life-nba-bracket-grid">
                 <PlayoffConferenceBlock data={nbaWesternPlayoffs} />
                 <PlayoffConferenceBlock data={nbaEasternPlayoffs} />

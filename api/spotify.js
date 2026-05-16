@@ -40,9 +40,27 @@ async function getAccessToken() {
   const now = Date.now();
   if (cached.access && now < cached.exp - 60_000) return cached.access;
 
-  /** Many projects only set REACT_APP_SPOTIFY_CLIENT_ID on Vercel — reuse for token refresh. */
-  const clientId = envTrim('SPOTIFY_CLIENT_ID') || envTrim('REACT_APP_SPOTIFY_CLIENT_ID');
-  const refreshToken = envTrim('SPOTIFY_REFRESH_TOKEN');
+  const idFromSpotify = envTrim('SPOTIFY_CLIENT_ID');
+  const idFromReact = envTrim('REACT_APP_SPOTIFY_CLIENT_ID');
+  if (idFromSpotify && idFromReact && idFromSpotify !== idFromReact) {
+    const err = new Error(
+      'Server misconfigured: SPOTIFY_CLIENT_ID and REACT_APP_SPOTIFY_CLIENT_ID are both set but differ. Delete the wrong one on Vercel (they must match the same Spotify app as your refresh token).',
+    );
+    err.status = 503;
+    err.hint =
+      'Keep a single Client ID everywhere. Easiest: delete SPOTIFY_CLIENT_ID on Vercel and only use REACT_APP_SPOTIFY_CLIENT_ID, then re-paste a fresh SPOTIFY_REFRESH_TOKEN from OAuth with that same app.';
+    throw err;
+  }
+
+  /** Prefer explicit server var; fall back to the same ID used by the React build. */
+  const clientId = idFromSpotify || idFromReact;
+  let refreshToken = envTrim('SPOTIFY_REFRESH_TOKEN');
+  if (
+    (refreshToken.startsWith('"') && refreshToken.endsWith('"')) ||
+    (refreshToken.startsWith("'") && refreshToken.endsWith("'"))
+  ) {
+    refreshToken = refreshToken.slice(1, -1).trim();
+  }
   const clientSecret = envTrim('SPOTIFY_CLIENT_SECRET');
 
   if (!clientId || !refreshToken) {
@@ -75,6 +93,16 @@ async function getAccessToken() {
     const err = new Error(`Spotify token refresh failed (${res.status})`);
     err.status = 502;
     err.detail = text.slice(0, 400);
+    try {
+      const j = JSON.parse(text);
+      if (j.error === 'invalid_grant') {
+        err.hint =
+          'Spotify rejected this refresh token. Fix: (1) On Vercel, use the SAME Client ID as in your local .env.local when you did OAuth. (2) Remove duplicate SPOTIFY_CLIENT_ID if it disagrees with REACT_APP_SPOTIFY_CLIENT_ID. (3) Do dev Spotify login again, copy the FULL spotify_refresh_token (no quotes), update Vercel, redeploy. (4) Do not remove app access at spotify.com/account/apps between OAuth and testing.';
+      }
+    } catch {
+      /* ignore */
+    }
+    err.client_id_prefix = clientId.slice(0, 4);
     throw err;
   }
 
@@ -167,8 +195,7 @@ export default async function handler(req, res) {
       error: e.message || 'Server error',
       detail: e.detail,
     };
-    if (Array.isArray(e.missing)) body.missing = e.missing;
-    if (e.hint) body.hint = e.hint;
+    if (e.client_id_prefix) body.client_id_prefix = e.client_id_prefix;
     return res.status(status).json(body);
   }
 }

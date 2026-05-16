@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HeroPremiumBg from './HeroPremiumBg';
-import HomeSpotify from './HomeSpotify';
+// import HomeSpotify from './HomeSpotify';
 import './Home.css';
 
 const Home = () => {
@@ -86,7 +86,8 @@ const Home = () => {
           </a>
         </div>
 
-        <HomeSpotify />
+        {/* Spotify: import HomeSpotify + <HomeSpotify /> when ready again */}
+        {/* <HomeSpotify /> */}
 
       </div>
     </section>

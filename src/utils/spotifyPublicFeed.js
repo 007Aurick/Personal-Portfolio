@@ -28,11 +28,13 @@ export async function fetchSpotifyPublicBundle() {
   if (!res.ok) {
     const missingPart = Array.isArray(json.missing) ? ` Missing: ${json.missing.join(' | ')}.` : '';
     const hintPart = json.hint ? ` ${json.hint}` : '';
+    const idPrefix = json.client_id_prefix ? ` Vercel client_id starts with: ${json.client_id_prefix}…` : '';
     const err = new Error(
       (json.error || `Spotify proxy failed (${res.status})`) +
         (json.detail ? ` ${json.detail}` : '') +
         missingPart +
-        hintPart,
+        hintPart +
+        idPrefix,
     );
     err.status = res.status;
     err.detail = json.detail;
