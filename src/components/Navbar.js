@@ -47,6 +47,14 @@ const Navbar = () => {
             >
               Projects
             </Link>
+            <Link
+              to="/outside-engineering"
+              className={`nav-link nav-link--outside ${location.pathname === '/outside-engineering' ? 'active' : ''}`}
+              onClick={closeMobileMenu}
+            >
+              <span className="nav-outside-full">Life</span>
+              <span className="nav-outside-short">Outside</span>
+            </Link>
             <Link 
               to="/contact" 
               className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}

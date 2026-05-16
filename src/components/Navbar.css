@@ -80,6 +80,36 @@
   border-color: #c69326;
 }
 
+.nav-outside-short {
+  display: none;
+}
+
+@media (max-width: 1080px) {
+  .nav-link--outside {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+    font-size: 0.82rem;
+  }
+
+  .nav-outside-full {
+    display: none;
+  }
+
+  .nav-outside-short {
+    display: inline;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu.active .nav-link--outside .nav-outside-full {
+    display: inline;
+  }
+
+  .nav-menu.active .nav-link--outside .nav-outside-short {
+    display: none;
+  }
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;

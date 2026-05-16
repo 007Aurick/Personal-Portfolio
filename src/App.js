@@ -5,7 +5,9 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import OutsideEngineering from './components/OutsideEngineering';
 import IntroLoader from './components/IntroLoader';
+import SpotifyCallback from './components/SpotifyCallback';
 import './App.css';
 
 function AppContent() {
@@ -48,9 +50,11 @@ function AppContent() {
       >
         <Navbar />
         <Routes>
+          <Route path="/callback" element={<SpotifyCallback />} />
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/outside-engineering" element={<OutsideEngineering />} />
         </Routes>
       </motion.div>
     </>

@@ -19,6 +19,24 @@ const Projects = () => {
     secondaryCtaUrl: 'https://github.com/AurickAnwar/Impact-Analysis-ML'
   };
 
+  const ros2Learning = {
+    title: 'Learning ROS2',
+    status: 'Currently Learning',
+    progressPercent: 30,
+    progressNote: "Made my first publisher.",
+    description:
+      'Slowly wiring my brain to think in nodes and topics...',
+    bullets: [
+      'Topics, nodes, subscribers, publishers',
+      'Gazebo — breaking things in sim before I break them in hardware.'
+    ],
+    technologies: ['ROS2', 'Python', 'Gazebo', 'Linux'],
+    primaryCtaLabel: 'ROS 2 Docs',
+    primaryCtaUrl: 'https://docs.ros.org/en/humble/',
+    secondaryCtaLabel: 'Gazebo',
+    secondaryCtaUrl: 'https://gazebosim.org/docs'
+  };
+
   
 
   const projects = [
@@ -70,7 +88,7 @@ const Projects = () => {
       description: 'Built a replica of the Google Home using Speech-to-Text APIs.',
       image: '/STT.png',
       technologies: ['OpenCV', 'Google Cloud', 'Speech-to-Text'],
-      projectUrl: '/https://github.com/AurickAnwar/Google-Home-Replica'
+      projectUrl: 'https://github.com/AurickAnwar/Google-Home-Replica'
     },
     {
       id: 7,
@@ -132,6 +150,48 @@ const Projects = () => {
               </a>
               <a href={magnifiedProject.secondaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                 {magnifiedProject.secondaryCtaLabel}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="featured-project fade-in-up">
+          <div className="featured-content">
+            <p className="featured-label">Featured Learning</p>
+            <h2>{ros2Learning.title}</h2>
+            <p className="featured-status">{ros2Learning.status}</p>
+            <p>{ros2Learning.description}</p>
+            <ul className="featured-list">
+              {ros2Learning.bullets.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+            <div className="featured-progress-block" role="status" aria-live="polite">
+              <div className="featured-progress-header">
+                <span className="featured-progress-title">Progress</span>
+                <span className="featured-progress-percent">{ros2Learning.progressPercent}%</span>
+              </div>
+              <div className="featured-progress-track" aria-label={`ROS2 learning progress ${ros2Learning.progressPercent}%`}>
+                <span
+                  className="featured-progress-fill"
+                  style={{ '--progress-width': `${ros2Learning.progressPercent}%` }}
+                />
+              </div>
+              <p className="featured-developing-text" style={{ marginTop: '0.65rem' }}>
+                {ros2Learning.progressNote}
+              </p>
+            </div>
+            <div className="project-technologies" style={{ marginTop: '1rem' }}>
+              {ros2Learning.technologies.map((tech) => (
+                <span key={tech} className="tech-tag">{tech}</span>
+              ))}
+            </div>
+            <div className="featured-actions">
+              <a href={ros2Learning.primaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn">
+                {ros2Learning.primaryCtaLabel}
+              </a>
+              <a href={ros2Learning.secondaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+                {ros2Learning.secondaryCtaLabel}
               </a>
             </div>
           </div>

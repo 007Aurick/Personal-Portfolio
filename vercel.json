@@ -7,9 +7,17 @@
       "config": {
         "distDir": "build"
       }
+    },
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
+    {
+      "src": "/api/spotify",
+      "dest": "/api/spotify.js"
+    },
     {
       "src": "/static/(.*)",
       "dest": "/static/$1",
@@ -33,4 +41,3 @@
     }
   ]
 }
-
