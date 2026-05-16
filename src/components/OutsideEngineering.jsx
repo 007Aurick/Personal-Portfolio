@@ -227,10 +227,7 @@ function OutsideEngineering() {
               <h2 id="life-vacations-heading" className="life-section-title">
                 Vacations
               </h2>
-              <p className="life-section-sub">
-                A horizontal reel of places that rewired my head for a week — scroll sideways, breathe
-                deep.
-              </p>
+              
             </div>
 
             <div className="life-vacation-shell">
@@ -274,10 +271,7 @@ function OutsideEngineering() {
               <h2 id="life-sports-heading" className="life-section-title">
                 Sports predictions
               </h2>
-              <p className="life-section-sub">
-                Hot takes with receipts (sometimes). Same discipline as debugging — wrong fast, adjust,
-                argue politely.
-              </p>
+              
             </div>
 
             <div className="life-sports-dashboard">
