@@ -247,6 +247,19 @@ const HomeSpotify = () => {
     <section className="home-spotify fade-in-up" aria-label="Spotify music">
       <div className="home-spotify-wrap">
         {error && <p className="home-spotify-error">{error}</p>}
+        {process.env.NODE_ENV === 'development' && configured && !publicFeed && (
+          <p className="home-spotify-api-banner home-spotify-api-banner--solo">
+            Local dev is showing <strong>placeholder</strong> Spotify data. Set{' '}
+            <code className="home-spotify-code">REACT_APP_SPOTIFY_PUBLIC_FEED=true</code> in{' '}
+            <code className="home-spotify-code">.env.local</code> and <strong>remove</strong>{' '}
+            <code className="home-spotify-code">REACT_APP_SPOTIFY_API_BASE</code> so the app calls{' '}
+            <code className="home-spotify-code">/api/spotify</code> on this port — Create React App{' '}
+            <code className="home-spotify-code">proxy</code> in <code className="home-spotify-code">package.json</code>{' '}
+            forwards it to production (no CORS). Restart <code className="home-spotify-code">npm start</code>. If you
+            keep <code className="home-spotify-code">REACT_APP_SPOTIFY_API_BASE</code>, deploy the latest{' '}
+            <code className="home-spotify-code">api/spotify.js</code> CORS change to Vercel first.
+          </p>
+        )}
         {!configured && (
           <p className="home-spotify-api-banner home-spotify-api-banner--solo">
             Add <code className="home-spotify-code">REACT_APP_SPOTIFY_CLIENT_ID</code> or enable{' '}

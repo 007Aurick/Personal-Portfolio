@@ -2,26 +2,58 @@
  * Vercel Serverless — serves your Spotify data to all visitors using a refresh token
  * (never exposed to the browser). Set env vars in the Vercel project dashboard.
  *
- * Required: SPOTIFY_CLIENT_ID, SPOTIFY_REFRESH_TOKEN
+ * Required: SPOTIFY_REFRESH_TOKEN, and either SPOTIFY_CLIENT_ID or REACT_APP_SPOTIFY_CLIENT_ID
  * Optional: SPOTIFY_CLIENT_SECRET (only if your Spotify app type requires it for refresh)
+ * Optional: SPOTIFY_CORS_ORIGINS — comma-separated extra browser origins (default allows CRA on :3000)
  */
 
 const TOKEN_URL = 'https://accounts.spotify.com/api/token';
 const API = 'https://api.spotify.com/v1';
 
+/** Local CRA dev calls production `/api/spotify` cross-origin — browsers require CORS. */
+function applyCors(req, res) {
+  const origin = req.headers.origin;
+  const extras = (process.env.SPOTIFY_CORS_ORIGINS || '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const allowed = new Set([
+    'http://127.0.0.1:3000',
+    'http://localhost:3000',
+    'http://127.0.0.1:3001',
+    'http://localhost:3001',
+    ...extras,
+  ]);
+  if (origin && allowed.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
+}
+
 let cached = { access: null, exp: 0 };
+
+function envTrim(name) {
+  return String(process.env[name] || '').trim();
+}
 
 async function getAccessToken() {
   const now = Date.now();
   if (cached.access && now < cached.exp - 60_000) return cached.access;
 
-  const clientId = process.env.SPOTIFY_CLIENT_ID;
-  const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
-  const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+  /** Many projects only set REACT_APP_SPOTIFY_CLIENT_ID on Vercel — reuse for token refresh. */
+  const clientId = envTrim('SPOTIFY_CLIENT_ID') || envTrim('REACT_APP_SPOTIFY_CLIENT_ID');
+  const refreshToken = envTrim('SPOTIFY_REFRESH_TOKEN');
+  const clientSecret = envTrim('SPOTIFY_CLIENT_SECRET');
 
   if (!clientId || !refreshToken) {
-    const err = new Error('Server misconfigured: missing SPOTIFY_CLIENT_ID or SPOTIFY_REFRESH_TOKEN');
+    const missing = [];
+    if (!clientId) missing.push('SPOTIFY_CLIENT_ID (or set REACT_APP_SPOTIFY_CLIENT_ID to the same Client ID)');
+    if (!refreshToken) missing.push('SPOTIFY_REFRESH_TOKEN (OAuth refresh token from Session Storage — not the Client ID)');
+    const err = new Error(`Server misconfigured: missing ${missing.join('; ')}`);
     err.status = 503;
+    err.missing = missing;
+    err.hint =
+      'Vercel → Project → Settings → Environment Variables → enable each for Production → Save → Redeploy. If a value is Sensitive, it is hidden in the UI after save but still counts — re-paste if unsure.';
     throw err;
   }
 
@@ -70,6 +102,15 @@ async function spotifyGet(path, token) {
 }
 
 export default async function handler(req, res) {
+  applyCors(req, res);
+
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Max-Age', '86400');
+    return res.status(204).end();
+  }
+
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
     return res.status(405).json({ error: 'Method not allowed' });
@@ -122,9 +163,12 @@ export default async function handler(req, res) {
     });
   } catch (e) {
     const status = e.status || 500;
-    return res.status(status).json({
+    const body = {
       error: e.message || 'Server error',
       detail: e.detail,
-    });
+    };
+    if (Array.isArray(e.missing)) body.missing = e.missing;
+    if (e.hint) body.hint = e.hint;
+    return res.status(status).json(body);
   }
 }

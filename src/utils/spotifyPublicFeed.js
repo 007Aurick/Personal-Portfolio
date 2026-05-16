@@ -26,7 +26,14 @@ export async function fetchSpotifyPublicBundle() {
     throw Object.assign(new Error('Invalid JSON from Spotify proxy'), { status: res.status });
   }
   if (!res.ok) {
-    const err = new Error(json.error || `Spotify proxy failed (${res.status})`);
+    const missingPart = Array.isArray(json.missing) ? ` Missing: ${json.missing.join(' | ')}.` : '';
+    const hintPart = json.hint ? ` ${json.hint}` : '';
+    const err = new Error(
+      (json.error || `Spotify proxy failed (${res.status})`) +
+        (json.detail ? ` ${json.detail}` : '') +
+        missingPart +
+        hintPart,
+    );
     err.status = res.status;
     err.detail = json.detail;
     throw err;
