@@ -94,6 +94,10 @@
 }
 
 @media (min-width: 901px) {
+  .home-content {
+    align-items: stretch;
+  }
+
   .home-image {
     min-width: min(640px, 52vw);
     margin-top: 0;

@@ -13,6 +13,12 @@
       "use": "@vercel/node"
     }
   ],
+  "crons": [
+    {
+      "path": "/api/spotify/feed",
+      "schedule": "0 14 * * *"
+    }
+  ],
   "routes": [
     {
       "src": "/api/spotify/feed",
@@ -38,7 +44,7 @@
       }
     },
     {
-      "src": "/(.*\\.(png|jpg|jpeg|gif|svg|ico|pdf|mov|mp4|webm|stl|iam))",
+      "src": "/(.*\\.(png|jpg|jpeg|gif|svg|ico|pdf|mov|mp4|webm|stl|iam|glb))",
       "dest": "/$1",
       "headers": {
         "Cache-Control": "public, max-age=31536000"
