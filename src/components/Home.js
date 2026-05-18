@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HeroPremiumBg from './HeroPremiumBg';
-// import HomeSpotify from './HomeSpotify';
+import BatmanHeroPortrait from './home/BatmanHeroPortrait';
+import SpotifySection from './spotify/SpotifySection';
 import './Home.css';
 
 const Home = () => {
@@ -40,19 +41,7 @@ const Home = () => {
             </div>
           </div>
           <div className="home-image fade-in-up">
-            <div className="image-placeholder floating">
-              <div className="profile-glow" />
-              <div className="profile-circle">
-                <img
-                  src="/aurick_anwar_photo.jpg"
-                  alt="Aurick Anwar"
-                  className="profile-image"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
-                />
-              </div>
-            </div>
+            <BatmanHeroPortrait />
           </div>
         </div>
         <div className="home-stats fade-in-up">
@@ -86,9 +75,7 @@ const Home = () => {
           </a>
         </div>
 
-        {/* Spotify: import HomeSpotify + <HomeSpotify /> when ready again */}
-        {/* <HomeSpotify /> */}
-
+        <SpotifySection />
       </div>
     </section>
   );

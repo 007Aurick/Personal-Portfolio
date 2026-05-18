@@ -7,7 +7,6 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import OutsideEngineering from './components/OutsideEngineering';
 import IntroLoader from './components/IntroLoader';
-// import SpotifyCallback from './components/SpotifyCallback';
 import './App.css';
 
 function AppContent() {
@@ -50,8 +49,6 @@ function AppContent() {
       >
         <Navbar />
         <Routes>
-          {/* Spotify OAuth callback — uncomment + import SpotifyCallback when re-enabling */}
-          {/* <Route path="/callback" element={<SpotifyCallback />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />

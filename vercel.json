@@ -9,14 +9,26 @@
       }
     },
     {
-      "src": "api/*.js",
+      "src": "api/**/*.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/spotify",
-      "dest": "/api/spotify.js"
+      "src": "/api/spotify/feed",
+      "dest": "/api/spotify/feed.js"
+    },
+    {
+      "src": "/api/spotify/current-playing",
+      "dest": "/api/spotify/current-playing.js"
+    },
+    {
+      "src": "/api/spotify/recent-tracks",
+      "dest": "/api/spotify/recent-tracks.js"
+    },
+    {
+      "src": "/api/spotify/top-artists",
+      "dest": "/api/spotify/top-artists.js"
     },
     {
       "src": "/static/(.*)",
