@@ -5,8 +5,62 @@ import {
   normalizeTopArtist,
 } from '../utils/spotifyNormalize';
 
-const POLL_MS_VISIBLE = 60_000;
-const POLL_MS_HIDDEN = 180_000;
+const POLL_MS_VISIBLE = 35_000;
+const POLL_MS_HIDDEN = 120_000;
+const LOCAL_CACHE_KEY = 'spotify-feed-cache-v2';
+const LOCAL_CACHE_MS = 30 * 60_000;
+
+function readLocalFeedCache() {
+  try {
+    const raw = localStorage.getItem(LOCAL_CACHE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed?.data || Date.now() - parsed.at > LOCAL_CACHE_MS) return null;
+    return parsed.data;
+  } catch {
+    return null;
+  }
+}
+
+function writeLocalFeedCache(data) {
+  try {
+    if ((data.recent?.items?.length ?? 0) > 0 || (data.top?.items?.length ?? 0) > 0) {
+      localStorage.setItem(
+        LOCAL_CACHE_KEY,
+        JSON.stringify({ at: Date.now(), data }),
+      );
+    }
+  } catch {
+    /* ignore */
+  }
+}
+
+function mergeWithLocalCache(feed) {
+  const local = readLocalFeedCache();
+  if (!local) return feed;
+
+  const emptyRecent = (feed.recent?.items?.length ?? 0) === 0;
+  const emptyTop = (feed.top?.items?.length ?? 0) === 0;
+  const needsFallback = emptyRecent || emptyTop;
+
+  if (!needsFallback) return feed;
+
+  return {
+    ...feed,
+    recent: emptyRecent && local.recent?.items?.length ? local.recent : feed.recent,
+    top: emptyTop && local.top?.items?.length ? local.top : feed.top,
+    currentlyPlaying:
+      !feed.currentlyPlaying?.isPlaying && local.currentlyPlaying?.isPlaying
+        ? local.currentlyPlaying
+        : feed.currentlyPlaying,
+    warnings:
+      feed.warnings?.length > 0
+        ? feed.warnings
+        : needsFallback
+          ? ['Showing your last saved Spotify data.']
+          : [],
+  };
+}
 
 function apiBase() {
   return (process.env.REACT_APP_SPOTIFY_API_BASE || '').replace(/\/$/, '');
@@ -35,6 +89,18 @@ async function fetchJson(path) {
   return json;
 }
 
+function friendlyFetchError(err) {
+  const msg = err?.message || '';
+  if (msg === 'Failed to fetch' || err?.name === 'TypeError') {
+    return (
+      'Spotify API not reachable. From the project folder run: npm run dev — ' +
+      'then open http://localhost:3000/api/spotify/feed (should show JSON). ' +
+      'Do not use npm start alone.'
+    );
+  }
+  return msg || 'Could not load Spotify activity';
+}
+
 export function useSpotifyFeed() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -50,51 +116,72 @@ export function useSpotifyFeed() {
   const [topArtistsHint, setTopArtistsHint] = useState(null);
   const fetchedAtRef = useRef(0);
 
+  const applyFeed = useCallback((feed) => {
+    setCurrentlyPlaying(normalizeCurrentlyPlaying(feed.currentlyPlaying));
+    setRecentTracks(
+      (feed.recent?.items || []).map(normalizeRecentPlayItem).filter(Boolean),
+    );
+
+    const top = feed.top || { items: [] };
+    if (top._topError === 403) {
+      setTopArtists([]);
+      setTopArtistsHint(
+        'Top artists need the user-top-read scope on your refresh token.',
+      );
+    } else {
+      setTopArtists((top.items || []).map(normalizeTopArtist).filter(Boolean));
+      setTopArtistsHint(null);
+    }
+
+    const hasData =
+      (feed.recent?.items?.length ?? 0) > 0 || (feed.top?.items?.length ?? 0) > 0;
+    const warnings = feed.warnings || [];
+
+    if (warnings.length > 0 && hasData) {
+      setWarning(warnings.join(' · '));
+      setError(null);
+    } else if (warnings.length > 0) {
+      setWarning(warnings.join(' · '));
+      setError(null);
+    } else {
+      setWarning(null);
+      setError(null);
+    }
+
+    return hasData;
+  }, []);
+
   const load = useCallback(async () => {
     try {
-      const feed = await fetchJson('/api/spotify/feed');
-
-      setCurrentlyPlaying(normalizeCurrentlyPlaying(feed.currentlyPlaying));
-      setRecentTracks(
-        (feed.recent?.items || []).map(normalizeRecentPlayItem).filter(Boolean),
-      );
-
-      const top = feed.top || { items: [] };
-      if (top._topError === 403) {
-        setTopArtists([]);
-        setTopArtistsHint(
-          'Top artists need the user-top-read scope on your refresh token.',
-        );
-      } else {
-        setTopArtists((top.items || []).map(normalizeTopArtist).filter(Boolean));
-        setTopArtistsHint(null);
-      }
-
-      const warnings = feed.warnings || [];
-      if (warnings.length > 0) {
-        const rateLimited = warnings.some((w) => /429|rate limit/i.test(w));
+      const feed = mergeWithLocalCache(await fetchJson('/api/spotify/feed'));
+      writeLocalFeedCache(feed);
+      applyFeed(feed);
+      fetchedAtRef.current = Date.now();
+    } catch (e) {
+      const cached = readLocalFeedCache();
+      if (cached) {
+        applyFeed(cached);
         setWarning(
-          rateLimited
-            ? 'Spotify is rate-limiting requests — showing what we can. Data should return in a minute.'
-            : warnings.join(' · '),
+          'Live refresh failed — showing saved data. Keep `npm run dev` running for updates.',
         );
+        setError(null);
       } else {
+        setError(friendlyFetchError(e));
         setWarning(null);
       }
-
-      fetchedAtRef.current = Date.now();
-      setError(null);
-    } catch (e) {
-      setError(e.message || 'Could not load Spotify activity');
-      setWarning(null);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [applyFeed]);
 
   useEffect(() => {
+    const cached = readLocalFeedCache();
+    if (cached) {
+      applyFeed(cached);
+      setLoading(false);
+    }
     load();
-  }, [load]);
+  }, [load, applyFeed]);
 
   useEffect(() => {
     const tick = () => {
@@ -110,17 +197,11 @@ export function useSpotifyFeed() {
       id = window.setInterval(tick, pollMs());
     };
 
-    const onFocus = () => {
-      if (!document.hidden) tick();
-    };
-
     document.addEventListener('visibilitychange', onVisibility);
-    window.addEventListener('focus', onFocus);
 
     return () => {
       window.clearInterval(id);
       document.removeEventListener('visibilitychange', onVisibility);
-      window.removeEventListener('focus', onFocus);
     };
   }, [load]);
 

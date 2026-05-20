@@ -1,4 +1,7 @@
 const { spotifyRoute } = require('../lib/spotify');
-const { fetchRecentTracks } = require('../lib/spotifyFetchers');
+const { fetchAll } = require('../lib/spotifyFetchers');
 
-module.exports = spotifyRoute((token) => fetchRecentTracks(token));
+module.exports = spotifyRoute(async (token) => {
+  const feed = await fetchAll(token);
+  return feed.recent;
+});

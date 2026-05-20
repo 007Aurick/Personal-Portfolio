@@ -129,8 +129,6 @@ async function spotifyGet(path, token) {
  * Cached Spotify GET — avoids 429s from tight polling / many visitors.
  * Returns stale cache on rate limit when available.
  */
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
 async function spotifyGetCached(path, token, { key, freshMs, staleMs, transform }) {
   const hit = cacheRead(key);
   if (hit.fresh) return hit.data;
@@ -139,16 +137,6 @@ async function spotifyGetCached(path, token, { key, freshMs, staleMs, transform 
 
   if (res.status === 429) {
     if (hit.stale && hit.data) return hit.data;
-    const retrySec = Math.min(
-      parseInt(res.headers.get('Retry-After') || '2', 10) || 2,
-      8,
-    );
-    await sleep(retrySec * 1000);
-    res = await spotifyGet(path, token);
-    if (res.status === 429 && hit.stale && hit.data) return hit.data;
-  }
-
-  if (res.status === 429) {
     const err = new Error(`Spotify rate limited (${key})`);
     err.status = 429;
     err.detail = await res.text().then((t) => t.slice(0, 200)).catch(() => '');
@@ -160,7 +148,10 @@ async function spotifyGetCached(path, token, { key, freshMs, staleMs, transform 
   return data;
 }
 
-function spotifyRoute(fetchData) {
+function spotifyRoute(fetchData, options = {}) {
+  const cacheControl =
+    options.cacheControl || 's-maxage=45, stale-while-revalidate=120';
+
   return async function handler(req, res) {
     applyCors(req, res);
 
@@ -177,7 +168,7 @@ function spotifyRoute(fetchData) {
     }
 
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    res.setHeader('Cache-Control', 's-maxage=45, stale-while-revalidate=120');
+    res.setHeader('Cache-Control', cacheControl);
 
     try {
       const token = await getAccessToken();
@@ -200,4 +191,5 @@ module.exports = {
   spotifyGet,
   spotifyGetCached,
   applyCors,
+  getAccessToken,
 };

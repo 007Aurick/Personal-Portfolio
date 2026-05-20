@@ -1,4 +1,7 @@
 const { spotifyRoute } = require('../lib/spotify');
-const { fetchTopArtists } = require('../lib/spotifyFetchers');
+const { fetchAll } = require('../lib/spotifyFetchers');
 
-module.exports = spotifyRoute((token) => fetchTopArtists(token));
+module.exports = spotifyRoute(async (token) => {
+  const feed = await fetchAll(token);
+  return feed.top;
+});

@@ -249,7 +249,7 @@ export const nbaWesternPlayoffs = {
           prediction: 'Spurs in 7',
           actual: null,
           outcome: 'pending',
-          note: 'Next game: May 18 @ 8:30 PM ET',
+          note: 'Next game: May 20 @ 8:30 PM ET',
         },
       ],
     },
@@ -299,9 +299,9 @@ export const nbaEasternPlayoffs = {
           id: 'e-r2-1',
           matchup: '(1) Pistons vs (4) Cavaliers',
           prediction: 'Pistons in 6',
-          actual: null,
-          outcome: 'pending',
-          note: 'Next game: May 17 @ 8 PM ET',
+          actual: 'Cavaliers advance (4-3)',
+          outcome: 'wrong',
+          
         },
         {
           id: 'e-r2-2',
@@ -317,10 +317,11 @@ export const nbaEasternPlayoffs = {
       series: [
         {
           id: 'e-r3-1',
-          matchup: '(1) Pistons vs (3) Knicks',
+          matchup: '(3) Knicks vs (4) Cavaliers',
           prediction: 'Knicks in 6',
           actual: null,
           outcome: 'pending',
+          note: 'Next game: May 21 @ 8 PM ET',
         },
       ],
     },

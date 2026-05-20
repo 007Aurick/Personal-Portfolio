@@ -7,7 +7,7 @@ const Contact = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,7 +16,7 @@ const Contact = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -24,10 +24,9 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Replace with your actual EmailJS IDs
-    const serviceID = "service_k6k4c9d";
-    const templateID = "template_qdwhf3b";
-    const publicKey = "vLTpZM41_YYRBnWZ7";
+    const serviceID = 'service_k6k4c9d';
+    const templateID = 'template_qdwhf3b';
+    const publicKey = 'vLTpZM41_YYRBnWZ7';
 
     emailjs
       .send(serviceID, templateID, formData, publicKey)
@@ -39,7 +38,7 @@ const Contact = () => {
         setTimeout(() => setSubmitStatus(''), 3000);
       })
       .catch((error) => {
-        console.error("EmailJS error:", error);
+        console.error('EmailJS error:', error);
         setIsSubmitting(false);
         setSubmitStatus('error');
       });
@@ -47,30 +46,29 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: "✦",
-      title: "Email",
-      value: "aurick.anwar2260biga@gmail.com",
-      link: "mailto:aurick.anwar2260biga@gmail.com"
-    },
-    
-    {
-      icon: "✦",
-      title: "Location",
-      value: "Toronto, Ontario, Canada",
-      link: "#"
+      icon: '✦',
+      title: 'Email',
+      value: 'aurick.anwar2260biga@gmail.com',
+      link: 'mailto:aurick.anwar2260biga@gmail.com',
     },
     {
-      icon: "✦",
-      title: "Twitter",
-      value: "x.com/007Aurick",
-      link: "https://x.com/007Aurick"
+      icon: '✦',
+      title: 'Location',
+      value: 'Toronto, Ontario, Canada',
+      link: '#',
     },
     {
-      icon: "✦",
-      title: "Instagram",
-      value: "instagram.com/_aur1ck/",
-      link: "https://www.instagram.com/_aur1ck/"
-    }
+      icon: '✦',
+      title: 'Twitter',
+      value: 'x.com/007Aurick',
+      link: 'https://x.com/007Aurick',
+    },
+    {
+      icon: '✦',
+      title: 'Instagram',
+      value: 'instagram.com/_aur1ck/',
+      link: 'https://www.instagram.com/_aur1ck/',
+    },
   ];
 
   return (
@@ -85,16 +83,17 @@ const Contact = () => {
 
         <div className="contact-content">
           <div className="contact-info fade-in-up">
-            <h3>Let's Connect</h3>
+            <h3>Let&apos;s Connect</h3>
             <p>
-              I&apos;m open to internships, collaborations, and product-focused engineering opportunities.
+              I&apos;m open to internships, collaborations, and product-focused engineering
+              opportunities.
             </p>
-            
+
             <div className="contact-details">
               {contactInfo.map((info, index) => (
-                <a 
-                  key={index} 
-                  href={info.link} 
+                <a
+                  key={index}
+                  href={info.link}
                   className="contact-item"
                   target={info.link.startsWith('http') ? '_blank' : '_self'}
                   rel={info.link.startsWith('http') ? 'noopener noreferrer' : ''}
@@ -121,7 +120,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div className="form-group">
                 <input
                   type="email"
@@ -132,7 +131,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div className="form-group">
                 <input
                   type="text"
@@ -143,7 +142,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div className="form-group">
                 <textarea
                   name="message"
@@ -152,20 +151,20 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                ></textarea>
+                />
               </div>
-              
-              <button 
-                type="submit" 
+
+              <button
+                type="submit"
                 className={`btn ${isSubmitting ? 'submitting' : ''}`}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
-              
+
               {submitStatus === 'success' && (
                 <div className="submit-success">
-                  ✅ Message sent successfully! I'll get back to you soon.
+                  ✅ Message sent successfully! I&apos;ll get back to you soon.
                 </div>
               )}
               {submitStatus === 'error' && (
