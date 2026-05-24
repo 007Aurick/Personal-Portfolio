@@ -13,10 +13,12 @@ const Projects = () => {
       'Designing a helmet-mounted prototype for real-world testing'
     ],
     technologies: ['ESP32', 'IMU Sensors', 'Machine Learning', 'Embedded Prototyping'],
-    primaryCtaLabel: 'Follow Progress',
-    primaryCtaUrl: 'https://www.instagram.com/magnifiedsystems/',
-    secondaryCtaLabel: 'View Related ML Work',
-    secondaryCtaUrl: 'https://github.com/AurickAnwar/Impact-Analysis-ML'
+    primaryCtaLabel: 'View Website',
+    primaryCtaUrl: 'https://www.magnifiedsystems.com/',
+    secondaryCtaLabel: 'View Instagram',
+    secondaryCtaUrl: 'https://www.instagram.com/magnifiedsystems/',
+    thirdCtaLabel: 'View GitHub Repository',
+    thirdCtaUrl: 'https://github.com/AurickAnwar/MagnifiedSystems'
   };
 
   const ros2Learning = {
@@ -151,6 +153,10 @@ const Projects = () => {
               <a href={magnifiedProject.secondaryCtaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                 {magnifiedProject.secondaryCtaLabel}
               </a>
+              <a href={magnifiedProject.thirdCtaUrl} target="_blank" rel="noopener noreferrer" className="btn">
+                {magnifiedProject.thirdCtaLabel}
+              </a>
+
             </div>
           </div>
         </div>
