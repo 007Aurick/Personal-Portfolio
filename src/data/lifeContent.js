@@ -319,9 +319,9 @@ export const nbaEasternPlayoffs = {
           id: 'e-r3-1',
           matchup: '(3) Knicks vs (4) Cavaliers',
           prediction: 'Knicks in 6',
-          actual: null,
-          outcome: 'pending',
-          note: 'Next game: May 25 @ 8 PM ET',
+          actual: 'Knicks advance (4-0)',
+          outcome: 'winner',
+          
         },
       ],
     },
