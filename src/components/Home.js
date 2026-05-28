@@ -65,7 +65,7 @@ const Home = () => {
           </a>
 
           <a
-            href="https://github.com/AurickAnwar"
+            href="https://github.com/007Aurick"
             target="_blank"
             rel="noopener noreferrer"
             className="stat-button"
