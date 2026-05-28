@@ -15,7 +15,17 @@ const Home = () => {
             <h1 className="home-title">AURICK ANWAR</h1>
             <h3 className="home-subtitle">Mechatronics Engineering @McMaster University</h3>
             <div className="home-role-lines">
-              <p>Founding Engineer @Magnified Systems</p>
+              <p>
+                Founding Engineer @{''}
+                <a
+                  href="https://www.magnifiedsystems.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="home-role-link"
+                >
+                  Magnified Systems
+                </a>
+              </p>
               <p>
                 SWE Intern @{''}
                 <a
@@ -57,11 +67,12 @@ const Home = () => {
 
           <a
             href="/resume-AurickAnwar.pdf"
-            download="resume-AurickAnwar.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="stat-button"
           >
             <div className="stat-icon">Resume</div>
-            <p>Download PDF</p>
+            <p>View Resume</p>
           </a>
 
           <a
