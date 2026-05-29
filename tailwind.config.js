@@ -5,26 +5,34 @@ module.exports = {
     extend: {
       colors: {
         ink: {
-          DEFAULT: '#0a0a0a',
-          raised: '#111111',
-          card: '#151515',
-          muted: '#9ca3af',
+          DEFAULT: '#06080c',
+          raised: '#0c1018',
+          card: '#111820',
+          muted: '#94a3b8',
         },
+        /* kept as `gold` in class names — values are tech cyan */
         gold: {
-          DEFAULT: '#b57a10',
-          light: '#d5a63c',
-          bright: '#f0ce70',
-          dim: 'rgba(181, 122, 16, 0.35)',
+          DEFAULT: '#22d3ee',
+          light: '#67e8f9',
+          bright: '#a5f3fc',
+          dim: 'rgba(34, 211, 238, 0.35)',
+        },
+        tech: {
+          DEFAULT: '#22d3ee',
+          light: '#67e8f9',
+          bright: '#a5f3fc',
+          dim: 'rgba(34, 211, 238, 0.35)',
+          blue: '#3b82f6',
         },
       },
       fontFamily: {
-        sans: ['"DM Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', '"DM Sans"', 'system-ui', 'sans-serif'],
         display: ['Syne', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
-        'gold-glow': '0 0 60px rgba(181, 122, 16, 0.12)',
-        'gold-card': '0 0 0 1px rgba(181, 122, 16, 0.22), 0 18px 50px rgba(0, 0, 0, 0.45)',
+        'gold-glow': '0 0 48px rgba(34, 211, 238, 0.1)',
+        'gold-card': '0 0 0 1px rgba(34, 211, 238, 0.18), 0 18px 50px rgba(0, 0, 0, 0.45)',
       },
       animation: {
         'eq-bar': 'eqBar 0.85s ease-in-out infinite',
@@ -46,7 +54,7 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'grain':
+        grain:
           "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
       },
     },

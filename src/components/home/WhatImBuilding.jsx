@@ -65,7 +65,7 @@ const WhatImBuilding = () => (
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.45, delay: i * 0.06 }}
           whileHover={{ y: -6 }}
-          className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-ink-card/80 p-6 shadow-[0_0_0_1px_rgba(181,122,16,0.08)] backdrop-blur-md transition-shadow duration-300 hover:border-gold/35 hover:shadow-gold-card"
+          className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-ink-card/80 p-6 shadow-[0_0_0_1px_rgba(34,211,238,0.08)] backdrop-blur-md transition-shadow duration-300 hover:border-gold/35 hover:shadow-gold-card"
         >
           <div
             className={`pointer-events-none absolute inset-0 bg-gradient-to-br opacity-60 transition-opacity duration-500 group-hover:opacity-100 ${item.accent}`}

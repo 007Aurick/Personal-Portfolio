@@ -31,7 +31,7 @@ const TopArtistsCard = ({ loading, artists, hint }) => {
         Top artists
       </p>
       <p className="mb-4 text-xs text-zinc-500">Short term · last ~4 weeks</p>
-      {hint && <p className="mb-3 text-xs text-amber-400/90">{hint}</p>}
+      {hint && <p className="mb-3 text-xs text-tech-light/80">{hint}</p>}
 
       <motion.ul
         className="flex flex-1 flex-col justify-between gap-2"

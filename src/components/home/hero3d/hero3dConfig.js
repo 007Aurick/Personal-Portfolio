@@ -9,14 +9,14 @@ export const MODEL_URLS = {
 
 export const CAMERA = {
   idle: {
-    position: [0.38, 0.3, 3.38],
-    fov: 40,
+    position: [0.38, 0.3, 3.12],
+    fov: 38,
     lookAt: [0.06, 0.4, 0.12],
   },
   /** Pulled back + shifted — full hand-forward pose, no right-edge crop. */
   killshot: {
-    position: [0.26, 0.28, 3.72],
-    fov: 42,
+    position: [0.26, 0.28, 3.45],
+    fov: 40,
     lookAt: [-0.08, 0.38, 0.16],
   },
 };
@@ -32,7 +32,7 @@ export const FIT_IDLE = {
   headY: 1.28,
   baseY: -0.96,
   offsetX: 0.14,
-  viewScale: 1.05,
+  viewScale: 1.14,
   widthWeight: 0.45,
   depthWeight: 0.82,
 };
@@ -42,7 +42,7 @@ export const FIT_KILLSHOT = {
   headY: 1.28,
   baseY: -0.96,
   offsetX: -0.1,
-  viewScale: 0.96,
+  viewScale: 1.06,
   widthWeight: 0.72,
   depthWeight: 0.9,
 };

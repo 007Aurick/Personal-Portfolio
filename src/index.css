@@ -1,3 +1,5 @@
+@import './theme.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,17 +11,16 @@
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0a0a0a;
-  color: #eaeaea;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
   line-height: 1.65;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: var(--font-mono);
 }
 
 html {
@@ -37,18 +38,14 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #111111;
+  background: var(--bg-raised);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(181, 122, 16, 0.75), rgba(181, 122, 16, 0.45));
+  background: linear-gradient(180deg, rgba(34, 211, 238, 0.55), rgba(8, 145, 178, 0.45));
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b57a10;
+  background: var(--accent-deep);
 }
-
-
-
-

@@ -1,0 +1,36 @@
+/**
+ * Tech / robotics design tokens — cool cyan on deep slate.
+ */
+:root {
+  --bg-base: #06080c;
+  --bg-raised: #0c1018;
+  --bg-card: #111820;
+  --bg-elevated: #161d28;
+
+  --text-primary: #e8eef4;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --accent: #22d3ee;
+  --accent-light: #67e8f9;
+  --accent-bright: #a5f3fc;
+  --accent-dim: rgba(34, 211, 238, 0.35);
+  --accent-soft: rgba(34, 211, 238, 0.12);
+  --accent-glow: rgba(34, 211, 238, 0.22);
+
+  --accent-secondary: #3b82f6;
+  --accent-deep: #0891b2;
+  --accent-deep-dark: #0e7490;
+
+  --border-subtle: rgba(148, 163, 184, 0.14);
+  --border-accent: rgba(34, 211, 238, 0.28);
+  --border-accent-strong: rgba(34, 211, 238, 0.55);
+
+  --font-display: 'Syne', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}

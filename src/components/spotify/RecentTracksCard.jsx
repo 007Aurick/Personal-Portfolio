@@ -64,7 +64,7 @@ const RecentTracksCard = ({ loading, tracks, emptyMessage = 'No recent tracks ye
               href={item.openUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="grid h-full min-h-[52px] grid-cols-[1.5rem_44px_1fr_auto] items-center gap-3 rounded-xl border border-white/[0.07] bg-black/30 px-2.5 py-2 transition-colors hover:border-gold/35 hover:bg-gold/[0.03] hover:shadow-[0_0_24px_rgba(181,122,16,0.08)]"
+              className="grid h-full min-h-[52px] grid-cols-[1.5rem_44px_1fr_auto] items-center gap-3 rounded-xl border border-white/[0.07] bg-black/30 px-2.5 py-2 transition-colors hover:border-gold/35 hover:bg-gold/[0.03] hover:shadow-[0_0_24px_rgba(34,211,238,0.08)]"
               whileHover={{ x: 2 }}
               transition={{ type: 'spring', stiffness: 400, damping: 28 }}
             >

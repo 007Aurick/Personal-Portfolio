@@ -1,167 +1,314 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import './IntroLoader.css';
 
-const LINES = [
-  'INITIALIZING AURICK.OS',
-  'LOADING PROJECTS...',
-  'SYSTEM READY'
+const PROMPT_USER = 'aurick@portfolio';
+const CHAR_MS = 38;
+const PAUSE_AFTER_CMD_MS = 280;
+const PAUSE_AFTER_OUTPUT_MS = 520;
+const PROGRESS_MS = 3000;
+const PROGRESS_TICK_MS = 40;
+const PROGRESS_BAR_WIDTH = 24;
+
+const SCRIPT = [
+  {
+    cmd: 'initializing portfolio.',
+    output: '✓ system ready',
+  },
+  {
+    cmd: 'loading sections.',
+    output: '✓ home  ✓ projects  ✓ contact  ✓ life',
+  },
+  {
+    cmd: 'loading projects.',
+    type: 'progress',
+    progressLabel: 'LOADING PROJECT ARCHIVES',
+    duration: PROGRESS_MS,
+  },
 ];
 
-const CHAR_MS = 52;
-const PAUSE_AFTER_LINE_MS = 420;
+function buildProgressBar(percent) {
+  const filled = Math.round((percent / 100) * PROGRESS_BAR_WIDTH);
+  const empty = PROGRESS_BAR_WIDTH - filled;
+  return `[${'█'.repeat(filled)}${'░'.repeat(empty)}] ${percent}%`;
+}
+
+function CommandLine({ command, showCursor }) {
+  return (
+    <div className="intro-term-line intro-term-line--cmd">
+      <span className="intro-term-prompt">
+        <span className="intro-term-prompt-user">{PROMPT_USER}</span>
+        <span className="intro-term-prompt-path">:~$</span>
+      </span>
+      <span className="intro-term-cmd">{command}</span>
+      {showCursor && <span className="intro-term-cursor">▌</span>}
+    </div>
+  );
+}
+
+function OutputLine({ text }) {
+  return <div className="intro-term-line intro-term-line--out">{text}</div>;
+}
+
+function ProgressLine({ label, percent }) {
+  return (
+    <div className="intro-term-line intro-term-line--out intro-term-progress">
+      <span className="intro-term-progress__label">{label}</span>
+      <span className="intro-term-progress__bar">{buildProgressBar(percent)}</span>
+    </div>
+  );
+}
 
 const IntroLoader = ({ onComplete }) => {
-  const [lineIndex, setLineIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [showLogo, setShowLogo] = useState(false);
-  const [showCta, setShowCta] = useState(false);
-  const [showTapHint, setShowTapHint] = useState(false);
+  const inputRef = useRef(null);
+  const [finishedLines, setFinishedLines] = useState([]);
+  const [stepIndex, setStepIndex] = useState(0);
+  const [typedCmd, setTypedCmd] = useState('');
+  const [phase, setPhase] = useState('typing');
+  const [progress, setProgress] = useState(0);
+  const [userInput, setUserInput] = useState('');
   const [isExiting, setIsExiting] = useState(false);
 
-  const particles = useMemo(
-    () =>
-      Array.from({ length: 18 }, (_, idx) => ({
-        id: idx,
-        left: `${(idx * 13 + 7) % 100}%`,
-        top: `${(idx * 23 + 17) % 100}%`,
-        delay: `${(idx % 7) * 0.18}s`,
-        duration: `${3.2 + (idx % 5) * 0.55}s`
-      })),
-    []
-  );
+  const scriptDone = stepIndex >= SCRIPT.length;
 
-  // Type current line one character at a time, pause, then next line
+  const resetTerminal = useCallback(() => {
+    setFinishedLines([]);
+    setStepIndex(0);
+    setTypedCmd('');
+    setUserInput('');
+    setProgress(0);
+    setPhase('typing');
+  }, []);
+
   useEffect(() => {
-    if (lineIndex >= LINES.length) {
+    if (scriptDone || phase !== 'typing') {
       return undefined;
     }
 
-    const full = LINES[lineIndex];
+    const full = SCRIPT[stepIndex].cmd;
     let pos = 0;
 
     const interval = setInterval(() => {
       pos += 1;
-      if (pos <= full.length) {
-        setCharIndex(pos);
-      }
+      setTypedCmd(full.slice(0, pos));
       if (pos >= full.length) {
         clearInterval(interval);
-        setTimeout(() => {
-          setCharIndex(0);
-          setLineIndex((i) => i + 1);
-        }, PAUSE_AFTER_LINE_MS);
+        setTimeout(() => setPhase('output'), PAUSE_AFTER_CMD_MS);
       }
     }, CHAR_MS);
 
     return () => clearInterval(interval);
-  }, [lineIndex]);
+  }, [stepIndex, phase, scriptDone]);
 
   useEffect(() => {
-    if (lineIndex < LINES.length) {
+    if (phase !== 'output' || scriptDone) {
       return undefined;
     }
 
-    const logoTimer = setTimeout(() => setShowLogo(true), 380);
-    const ctaTimer = setTimeout(() => setShowCta(true), 1200);
+    const step = SCRIPT[stepIndex];
 
-    return () => {
-      clearTimeout(logoTimer);
-      clearTimeout(ctaTimer);
-    };
-  }, [lineIndex]);
+    if (step.type === 'progress') {
+      const timer = setTimeout(() => {
+        setFinishedLines((prev) => [...prev, { type: 'command', text: step.cmd }]);
+        setTypedCmd('');
+        setProgress(0);
+        setPhase('progress');
+      }, PAUSE_AFTER_CMD_MS);
+      return () => clearTimeout(timer);
+    }
+
+    const timer = setTimeout(() => {
+      setFinishedLines((prev) => [
+        ...prev,
+        { type: 'command', text: step.cmd },
+        { type: 'output', text: step.output },
+      ]);
+      setTypedCmd('');
+      setStepIndex((i) => i + 1);
+      setPhase('typing');
+    }, PAUSE_AFTER_OUTPUT_MS);
+
+    return () => clearTimeout(timer);
+  }, [phase, stepIndex, scriptDone]);
 
   useEffect(() => {
-    if (!showCta) {
-      setShowTapHint(false);
+    if (phase !== 'progress') {
       return undefined;
     }
-    const t = setTimeout(() => setShowTapHint(true), 480);
+
+    const step = SCRIPT[stepIndex];
+    const duration = step.duration ?? PROGRESS_MS;
+    let elapsed = 0;
+
+    const interval = setInterval(() => {
+      elapsed += PROGRESS_TICK_MS;
+      const pct = Math.min(100, Math.round((elapsed / duration) * 100));
+      setProgress(pct);
+
+      if (pct >= 100) {
+        clearInterval(interval);
+        setFinishedLines((prev) => [
+          ...prev,
+          {
+            type: 'progress',
+            label: step.progressLabel ?? 'LOADING PROJECT ARCHIVES',
+            percent: 100,
+          },
+          { type: 'output', text: 'SYSTEM READY' },
+        ]);
+        setStepIndex((i) => i + 1);
+        setPhase('typing');
+      }
+    }, PROGRESS_TICK_MS);
+
+    return () => clearInterval(interval);
+  }, [phase, stepIndex]);
+
+  useEffect(() => {
+    if (!scriptDone || phase !== 'typing') {
+      return undefined;
+    }
+    const t = setTimeout(() => setPhase('prompt'), 450);
     return () => clearTimeout(t);
-  }, [showCta]);
+  }, [scriptDone, phase]);
 
-  const handleEnter = () => {
+  useEffect(() => {
+    if (phase === 'prompt' && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [phase]);
+
+  const finishIntro = useCallback(() => {
+    if (isExiting) {
+      return;
+    }
     setIsExiting(true);
-    setTimeout(() => onComplete(), 700);
+    setTimeout(() => onComplete(), 650);
+  }, [isExiting, onComplete]);
+
+  const handleSkip = useCallback(() => {
+    if (isExiting) {
+      return;
+    }
+    setIsExiting(true);
+    setTimeout(() => onComplete(), 400);
+  }, [isExiting, onComplete]);
+
+  const submitPrompt = useCallback(() => {
+    const answer = userInput.trim().toLowerCase();
+
+    if (answer === 'yes') {
+      finishIntro();
+      return;
+    }
+
+    if (answer === 'no') {
+      resetTerminal();
+      return;
+    }
+
+    setFinishedLines((prev) => [
+      ...prev,
+      { type: 'command', text: userInput },
+      { type: 'output', text: 'Invalid input. Type yes or no.' },
+    ]);
+    setUserInput('');
+  }, [userInput, finishIntro, resetTerminal]);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'c' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        handleSkip();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [handleSkip]);
+
+  const handlePromptKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      submitPrompt();
+    }
   };
 
-  const allLinesDone = lineIndex >= LINES.length;
+  const activeCmd =
+    !scriptDone && (phase === 'typing' || phase === 'output') ? (
+      <CommandLine
+        command={phase === 'output' ? SCRIPT[stepIndex].cmd : typedCmd}
+        showCursor={phase === 'typing'}
+      />
+    ) : null;
+
+  const progressStep = phase === 'progress' ? SCRIPT[stepIndex] : null;
 
   return (
     <motion.div
       className="intro-loader"
       initial={{ opacity: 1 }}
       animate={{ opacity: isExiting ? 0 : 1 }}
-      transition={{ duration: 0.6, ease: 'easeInOut' }}
+      transition={{ duration: 0.55, ease: 'easeInOut' }}
+      role="dialog"
+      aria-label="Portfolio terminal intro"
     >
-      <div className="intro-grid-scan" />
+      <div className="intro-loader__center">
+        <p className="intro-loader__skip-hint" aria-hidden="true">
+          press <kbd>^C</kbd> to skip
+        </p>
+        <div className="intro-terminal">
+          <div className="intro-terminal__titlebar">
+            <div className="intro-terminal__dots" aria-hidden="true">
+              <span className="intro-terminal__dot intro-terminal__dot--close" />
+              <span className="intro-terminal__dot intro-terminal__dot--min" />
+              <span className="intro-terminal__dot intro-terminal__dot--max" />
+            </div>
+            <span className="intro-terminal__title">aurick@portfolio — bash</span>
+          </div>
 
-      {particles.map((particle) => (
-        <span
-          key={particle.id}
-          className="intro-particle"
-          style={{
-            left: particle.left,
-            top: particle.top,
-            animationDelay: particle.delay,
-            animationDuration: particle.duration
-          }}
-        />
-      ))}
+          <div className="intro-terminal__body">
+            {finishedLines.map((line, i) => {
+              if (line.type === 'command') {
+                return <CommandLine key={`cmd-${i}`} command={line.text} showCursor={false} />;
+              }
+              if (line.type === 'progress') {
+                return (
+                  <ProgressLine key={`prog-${i}`} label={line.label} percent={line.percent} />
+                );
+              }
+              return <OutputLine key={`out-${i}`} text={line.text} />;
+            })}
 
-      <div className="intro-content">
-        <div className="intro-lines">
-          {LINES.map((line, idx) => {
-            if (idx > lineIndex) {
-              return null;
-            }
+            {activeCmd}
 
-            const isComplete = idx < lineIndex;
-            const display = isComplete ? line : line.slice(0, charIndex);
-            const isActive = !allLinesDone && idx === lineIndex;
+            {progressStep && (
+              <ProgressLine
+                label={progressStep.progressLabel ?? 'LOADING PROJECT ARCHIVES'}
+                percent={progress}
+              />
+            )}
 
-            return (
-              <p key={line} className="intro-line">
-                &gt; {display}
-                {isActive && <span className="intro-cursor">|</span>}
-              </p>
-            );
-          })}
-        </div>
-
-        <motion.h2
-          className="intro-logo"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: showLogo ? 1 : 0, y: showLogo ? 0 : 8 }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
-        >
-          AURICK ANWAR
-        </motion.h2>
-
-        <div className="intro-cta-wrap">
-          <motion.button
-            type="button"
-            className="intro-enter-btn"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: showCta ? 1 : 0, y: showCta ? 0 : 10 }}
-            transition={{ duration: 0.45, ease: 'easeInOut' }}
-            onClick={handleEnter}
-          >
-            View Portfolio
-          </motion.button>
-          <motion.div
-            className="intro-tap-hint"
-            aria-hidden
-            initial={{ opacity: 0, y: 8 }}
-            animate={{
-              opacity: showCta && showTapHint && !isExiting ? 1 : 0,
-              y: showCta && showTapHint && !isExiting ? 0 : 8
-            }}
-            transition={{ duration: 0.38, ease: 'easeOut' }}
-          >
-            <span className="intro-tap-finger">👆</span>
-            <span className="intro-tap-hint-label">click here</span>
-          </motion.div>
+            {phase === 'prompt' && (
+              <>
+                <OutputLine text="Continue (Yes/No):" />
+                <div className="intro-term-input-row">
+                  <CommandLine command={userInput} showCursor />
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    className="intro-term-input"
+                    value={userInput}
+                    onChange={(e) => setUserInput(e.target.value)}
+                    onKeyDown={handlePromptKeyDown}
+                    autoComplete="off"
+                    autoCapitalize="off"
+                    spellCheck={false}
+                    aria-label="Type yes or no to continue"
+                  />
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>

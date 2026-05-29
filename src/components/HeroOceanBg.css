@@ -4,7 +4,7 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background: radial-gradient(circle at 65% 50%, rgba(181, 122, 16, 0.06) 0%, transparent 45%);
+  background: radial-gradient(circle at 65% 50%, rgba(34, 211, 238, 0.06) 0%, transparent 45%);
 }
 
 .hero-network-svg {
@@ -13,7 +13,7 @@
 }
 
 .hero-micro-dots circle {
-  fill: rgba(181, 122, 16, 0.1);
+  fill: rgba(34, 211, 238, 0.1);
 }
 
 .hero-micro-dot {
@@ -21,7 +21,7 @@
 }
 
 .hero-line {
-  stroke: rgba(181, 122, 16, 0.6);
+  stroke: rgba(34, 211, 238, 0.6);
   stroke-width: 0.09;
   fill: none;
   stroke-dasharray: 100;
@@ -43,8 +43,8 @@
 }
 
 .hero-node {
-  fill: #b57a10;
-  filter: drop-shadow(0 0 1px rgba(181, 122, 16, 0.5));
+  fill: #22d3ee;
+  filter: drop-shadow(0 0 1px rgba(34, 211, 238, 0.5));
   transform-origin: center;
   animation: heroNodePulse ease-in-out infinite;
 }

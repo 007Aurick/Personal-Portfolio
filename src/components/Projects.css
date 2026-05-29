@@ -15,9 +15,9 @@
 }
 
 .featured-project {
-  background: #111111;
-  border: 1px solid #b57a10;
-  box-shadow: 0 0 40px rgba(181, 122, 16, 0.1);
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 0 32px rgba(34, 211, 238, 0.06);
   border-radius: 16px;
   padding: clamp(1.8rem, 4vw, 2.8rem);
   min-height: 360px;
@@ -61,8 +61,8 @@
 .featured-media {
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(181, 122, 16, 0.28);
-  background: #0a0a0a;
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  background: var(--bg-base);
   line-height: 0;
 }
 
@@ -74,7 +74,7 @@
 
 .featured-label {
   font-size: 0.78rem;
-  color: #b57a10;
+  color: #22d3ee;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 0.7rem;
@@ -90,11 +90,11 @@
   align-items: center;
   font-size: 0.78rem;
   padding: 0.3rem 0.65rem;
-  border: 1px solid rgba(181, 122, 16, 0.55);
+  border: 1px solid rgba(34, 211, 238, 0.55);
   border-radius: 999px;
-  color: #b57a10;
+  color: #22d3ee;
   margin-bottom: 0.95rem;
-  background: rgba(181, 122, 16, 0.08);
+  background: rgba(34, 211, 238, 0.08);
 }
 
 .featured-content p {
@@ -119,9 +119,9 @@
 
 .featured-progress-block {
   margin-top: 1rem;
-  border: 1px solid rgba(181, 122, 16, 0.35);
+  border: 1px solid rgba(34, 211, 238, 0.35);
   border-radius: 14px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(181, 122, 16, 0.04));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(34, 211, 238, 0.04));
   padding: 0.9rem 1rem;
 }
 
@@ -136,7 +136,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #b57a10;
+  color: #22d3ee;
   font-weight: 600;
 }
 
@@ -224,7 +224,7 @@
 
 .projects-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, #b57a10, transparent);
+  background: linear-gradient(to right, transparent, #22d3ee, transparent);
   opacity: 0.3;
   margin: 0 0 2.8rem;
 }
@@ -240,7 +240,7 @@
   flex-direction: column;
   text-decoration: none;
   background: #151515;
-  border: 1px solid rgba(181, 122, 16, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   border-radius: 14px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -248,14 +248,14 @@
 
 .project-card:hover {
   transform: translateY(-8px) scale(1.01);
-  border-color: rgba(181, 122, 16, 0.85);
-  box-shadow: 0 10px 30px rgba(181, 122, 16, 0.15);
+  border-color: rgba(34, 211, 238, 0.85);
+  box-shadow: 0 10px 30px rgba(34, 211, 238, 0.15);
 }
 
 .project-image {
   position: relative;
   height: 165px;
-  background: #111111;
+  background: var(--bg-card);
 }
 
 .project-image img {
@@ -318,18 +318,18 @@
 
 .tech-tag {
   font-size: 0.7rem;
-  border: 1px solid rgba(181, 122, 16, 0.28);
-  color: #b57a10;
-  background: rgba(181, 122, 16, 0.06);
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.06);
   padding: 0.24rem 0.5rem;
   border-radius: 999px;
   transition: all 0.3s ease;
 }
 
 .tech-tag:hover {
-  background: rgba(181, 122, 16, 0.14);
-  border-color: rgba(181, 122, 16, 0.7);
-  box-shadow: 0 0 12px rgba(181, 122, 16, 0.22);
+  background: rgba(34, 211, 238, 0.14);
+  border-color: rgba(34, 211, 238, 0.7);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.22);
 }
 
 .project-link {
@@ -337,10 +337,14 @@
   align-items: center;
   justify-content: center;
   padding: 0.55rem 0.9rem;
-  color: #120d02;
-  background: linear-gradient(180deg, #f0ce70 0%, #d5a63c 36%, #b57a10 72%, #7c530f 100%);
-  border: 1px solid #c69326;
-  border-radius: 9px;
+  color: #ecfeff;
+  background: linear-gradient(180deg, var(--accent-deep) 0%, #155e75 100%);
+  border: 1px solid var(--border-accent-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   font-weight: 600;
   transition: all 0.3s ease;
   margin-top: auto;
@@ -349,7 +353,7 @@
 }
 
 .project-card:hover .project-link {
-  box-shadow: 0 0 18px rgba(181, 122, 16, 0.46);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.46);
   transform: scale(1.05);
 }
 

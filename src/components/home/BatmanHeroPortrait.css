@@ -1,11 +1,11 @@
 .batman-hero {
   position: relative;
   width: 100%;
-  max-width: min(780px, 54vw);
+  max-width: min(980px, 62vw);
   height: 100%;
   min-height: 100%;
-  margin-left: auto;
-  margin-right: 0;
+  margin-left: 0;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   align-self: stretch;
@@ -15,7 +15,7 @@
   position: relative;
   flex: 1 1 auto;
   width: 100%;
-  min-height: clamp(420px, 52vh, 560px);
+  min-height: clamp(480px, 58vh, 640px);
   height: 100%;
   background: transparent;
   overflow: visible;
@@ -74,7 +74,7 @@
 .batman-hero__controls {
   position: absolute;
   left: 50%;
-  bottom: 0.5rem;
+  bottom: 0.15rem;
   transform: translateX(-50%);
   z-index: 4;
   display: flex;
@@ -89,29 +89,29 @@
   display: inline-flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(120, 130, 145, 0.4);
-  background: rgba(12, 14, 18, 0.88);
-  color: #c8cdd4;
-  font-family: inherit;
-  font-size: 0.7rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-accent);
+  background: rgba(17, 24, 32, 0.9);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-  transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .batman-hero__toggle:hover {
-  border-color: rgba(160, 175, 195, 0.55);
-  color: #eef2f7;
-  transform: translateY(-1px);
+  border-color: var(--border-accent-strong);
+  color: var(--text-primary);
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.1);
 }
 
 .batman-hero__toggle--active {
-  border-color: rgba(94, 180, 255, 0.5);
-  color: #dff4ff;
+  border-color: rgba(34, 211, 238, 0.55);
+  color: var(--accent-bright);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
 }
 
 .batman-hero__loading-hint {

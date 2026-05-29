@@ -33,7 +33,7 @@
   height: min(55vw, 420px);
   top: -8%;
   left: -10%;
-  background: radial-gradient(circle, rgba(181, 122, 16, 0.35) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.35) 0%, transparent 70%);
 }
 
 .life-glow--b {
@@ -58,7 +58,7 @@
   height: 2px;
   border-radius: 50%;
   background: rgba(240, 206, 112, 0.85);
-  box-shadow: 0 0 14px rgba(181, 122, 16, 0.55), 0 0 28px rgba(181, 122, 16, 0.2);
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.55), 0 0 28px rgba(34, 211, 238, 0.2);
   animation: lifeParticleDrift 16s ease-in-out infinite;
   opacity: 0.35;
 }
@@ -87,7 +87,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #d5a63c;
+  color: #67e8f9;
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -99,7 +99,7 @@
   line-height: 1.12;
   color: #f4f1ea;
   margin-bottom: 1.1rem;
-  text-shadow: 0 0 40px rgba(181, 122, 16, 0.12);
+  text-shadow: 0 0 40px rgba(34, 211, 238, 0.12);
 }
 
 .life-hero-lede {
@@ -192,15 +192,15 @@
 .life-polaroid-inner {
   border-radius: 4px 4px 3px 3px;
   padding: 0.65rem 0.65rem 1rem;
-  background: linear-gradient(165deg, #f5f0e8 0%, #e8e2d8 48%, #dcd5c9 100%);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  background: linear-gradient(165deg, #141c26 0%, #0f151d 48%, #0a0e14 100%);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(34, 211, 238, 0.12),
+    inset 0 1px 0 rgba(148, 163, 184, 0.08);
   transition: box-shadow 0.45s ease, transform 0.45s ease;
 }
 
 .life-polaroid:hover .life-polaroid-inner {
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(181, 122, 16, 0.35),
-    0 0 48px rgba(181, 122, 16, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(34, 211, 238, 0.35),
+    0 0 48px rgba(34, 211, 238, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .life-polaroid-photo {
@@ -247,7 +247,7 @@
 .life-polaroid-date {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #b57a10;
+  color: #22d3ee;
   margin-bottom: 0.45rem;
 }
 
@@ -290,7 +290,7 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding: 0.75rem 0 1.5rem;
-  scrollbar-color: rgba(181, 122, 16, 0.5) #141414;
+  scrollbar-color: rgba(34, 211, 238, 0.5) #141414;
 }
 
 .life-vacation-track::-webkit-scrollbar {
@@ -298,7 +298,7 @@
 }
 
 .life-vacation-track::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, rgba(181, 122, 16, 0.65), rgba(181, 122, 16, 0.35));
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.65), rgba(34, 211, 238, 0.35));
   border-radius: 8px;
 }
 
@@ -307,10 +307,10 @@
   scroll-snap-align: center;
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(181, 122, 16, 0.28);
+  border: 1px solid rgba(34, 211, 238, 0.28);
   background: rgba(18, 18, 18, 0.65);
   backdrop-filter: blur(14px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(181, 122, 16, 0.06);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(34, 211, 238, 0.06);
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease,
     border-color 0.35s ease;
 }
@@ -318,7 +318,7 @@
 .life-vacation-card:hover {
   transform: translateY(-8px) scale(1.01);
   border-color: rgba(213, 166, 60, 0.45);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55), 0 0 50px rgba(181, 122, 16, 0.12);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55), 0 0 50px rgba(34, 211, 238, 0.12);
 }
 
 .life-vacation-visual {
@@ -369,7 +369,7 @@
   border-radius: 999px;
   color: #f4f1ea;
   background: rgba(12, 12, 12, 0.55);
-  border: 1px solid rgba(181, 122, 16, 0.4);
+  border: 1px solid rgba(34, 211, 238, 0.4);
   backdrop-filter: blur(10px);
 }
 
@@ -389,7 +389,7 @@
 .life-vacation-date {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #d5a63c;
+  color: #67e8f9;
   margin-bottom: 0.55rem;
 }
 
@@ -410,9 +410,9 @@
 .life-sports-accuracy {
   border-radius: 16px;
   padding: 1.35rem 1.5rem;
-  border: 1px solid rgba(181, 122, 16, 0.32);
+  border: 1px solid rgba(34, 211, 238, 0.32);
   background: linear-gradient(155deg, rgba(24, 22, 18, 0.95) 0%, rgba(10, 10, 10, 0.92) 100%);
-  box-shadow: 0 0 36px rgba(181, 122, 16, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 36px rgba(34, 211, 238, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
 }
 
@@ -435,7 +435,7 @@
   font-size: 1.85rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(180deg, #f0ce70 0%, #d5a63c 45%, #b57a10 100%);
+  background: linear-gradient(180deg, #a5f3fc 0%, #67e8f9 45%, #22d3ee 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -459,8 +459,8 @@
   display: block;
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #7c530f, #d5a63c, #f0ce70);
-  box-shadow: 0 0 16px rgba(181, 122, 16, 0.45);
+  background: linear-gradient(90deg, #155e75, #67e8f9, #a5f3fc);
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.45);
   transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -514,7 +514,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #d5a63c;
+  color: #67e8f9;
   margin-bottom: 1rem;
   font-weight: 700;
 }
@@ -529,7 +529,7 @@
   position: relative;
   border-radius: 14px;
   padding: 1.15rem 1.2rem 1.2rem;
-  border: 1px solid rgba(181, 122, 16, 0.22);
+  border: 1px solid rgba(34, 211, 238, 0.22);
   background: rgba(16, 16, 16, 0.88);
   transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.35s ease;
 }
@@ -540,14 +540,14 @@
   inset: 0;
   border-radius: 14px;
   opacity: 0;
-  background: radial-gradient(120% 80% at 10% 0%, rgba(181, 122, 16, 0.12), transparent 55%);
+  background: radial-gradient(120% 80% at 10% 0%, rgba(34, 211, 238, 0.12), transparent 55%);
   transition: opacity 0.4s ease;
   pointer-events: none;
 }
 
 .life-sports-card:hover {
   border-color: rgba(213, 166, 60, 0.45);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 28px rgba(181, 122, 16, 0.1);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 28px rgba(34, 211, 238, 0.1);
   transform: translateY(-3px);
 }
 
@@ -560,7 +560,7 @@
   font-size: 0.65rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #b57a10;
+  color: #22d3ee;
   margin-bottom: 0.45rem;
 }
 
@@ -581,7 +581,7 @@
 .life-sports-card-prediction {
   font-size: 1rem;
   font-weight: 700;
-  color: #f0ce70;
+  color: #a5f3fc;
   line-height: 1.35;
 }
 
@@ -616,7 +616,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #d5a63c;
+  color: #67e8f9;
   font-weight: 700;
   margin-bottom: 1rem;
 }
@@ -636,14 +636,14 @@
   .life-ufc-wide-bout--split {
     border-left: none !important;
     padding-left: 0 !important;
-    border-top: 1px solid rgba(181, 122, 16, 0.22);
+    border-top: 1px solid rgba(34, 211, 238, 0.22);
     padding-top: 1.25rem;
     margin-top: 0.25rem;
   }
 }
 
 .life-ufc-wide-bout--split {
-  border-left: 1px solid rgba(181, 122, 16, 0.22);
+  border-left: 1px solid rgba(34, 211, 238, 0.22);
   padding-left: 1.75rem;
 }
 
@@ -670,7 +670,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #d5a63c;
+  color: #67e8f9;
   font-weight: 700;
   margin: 0;
 }
@@ -725,7 +725,7 @@
 
 .life-nba-finals-wrap {
   padding-top: 0.5rem;
-  border-top: 1px solid rgba(181, 122, 16, 0.2);
+  border-top: 1px solid rgba(34, 211, 238, 0.2);
 }
 
 .life-bracket-card {
@@ -744,7 +744,7 @@
 
 .life-bracket-card--winner {
   border-color: rgba(213, 166, 60, 0.45);
-  box-shadow: 0 0 18px rgba(181, 122, 16, 0.08);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.08);
 }
 
 .life-bracket-card--wrong {
@@ -775,8 +775,8 @@
 }
 
 .life-bracket-card--winner .life-bracket-status {
-  background: rgba(181, 122, 16, 0.2);
-  color: #f0ce70;
+  background: rgba(34, 211, 238, 0.2);
+  color: #a5f3fc;
 }
 
 .life-bracket-card--wrong .life-bracket-status {
@@ -816,7 +816,7 @@
 }
 
 .life-bracket-pred {
-  color: #f0ce70;
+  color: #a5f3fc;
   font-weight: 600;
 }
 

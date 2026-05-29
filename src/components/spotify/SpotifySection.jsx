@@ -46,7 +46,7 @@ const SpotifySection = () => {
 
       {warning && !error && (
         <motion.p
-          className="relative mb-4 rounded-xl border border-amber-500/25 bg-amber-950/25 px-4 py-3 text-sm text-amber-200/90"
+          className="relative mb-4 rounded-xl border border-tech/25 bg-tech/5 px-4 py-3 text-sm text-tech-light/90"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >

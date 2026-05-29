@@ -47,8 +47,8 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.9rem;
-  background: #111111;
-  border: 1px solid rgba(181, 122, 16, 0.25);
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
   border-radius: 12px;
   text-decoration: none;
   transition: all 0.25s ease;
@@ -56,8 +56,8 @@
 
 .contact-item:hover {
   transform: translateY(-3px);
-  border-color: rgba(181, 122, 16, 0.7);
-  box-shadow: 0 10px 24px rgba(181, 122, 16, 0.1);
+  border-color: rgba(34, 211, 238, 0.7);
+  box-shadow: 0 10px 24px rgba(34, 211, 238, 0.1);
 }
 
 .contact-icon {
@@ -66,10 +66,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(181, 122, 16, 0.1);
-  border: 1px solid rgba(181, 122, 16, 0.5);
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.5);
   border-radius: 50%;
-  color: #b57a10;
+  color: #22d3ee;
 }
 
 .contact-text h4 {
@@ -84,9 +84,9 @@
 }
 
 .contact-form-container {
-  background: #151515;
-  border: 1px solid rgba(181, 122, 16, 0.26);
-  border-radius: 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
 }
@@ -99,8 +99,8 @@
 .form-group textarea {
   width: 100%;
   padding: 0.85rem 0.95rem;
-  background: #111111;
-  border: 1px solid rgba(181, 122, 16, 0.25);
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
   border-radius: 10px;
   color: #eaeaea;
   font-size: 1rem;
@@ -115,8 +115,8 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #b57a10;
-  box-shadow: 0 0 0 4px rgba(181, 122, 16, 0.15);
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.15);
 }
 
 .form-group textarea {
@@ -126,8 +126,6 @@
 
 .contact-form .btn {
   width: 100%;
-  background: linear-gradient(180deg, #f0ce70 0%, #d5a63c 36%, #b57a10 72%, #7c530f 100%);
-  color: #120d02;
 }
 
 .btn.submitting {
@@ -138,8 +136,8 @@
 .submit-success {
   margin-top: 1rem;
   padding: 0.8rem 1rem;
-  background: rgba(181, 122, 16, 0.1);
-  border: 1px solid rgba(181, 122, 16, 0.45);
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.45);
   border-radius: 10px;
   color: #eaeaea;
   text-align: center;

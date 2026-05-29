@@ -1,9 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import HeroPremiumBg from './HeroPremiumBg';
 import BatmanHeroPortrait from './home/BatmanHeroPortrait';
 import SpotifySection from './spotify/SpotifySection';
 import './Home.css';
+
+const SOCIAL_LINKS = [
+  {
+    href: 'https://linkedin.com/in/aurick-anwar',
+    label: 'LinkedIn',
+    caption: 'linkedin',
+    icon: '/Linkedin.png',
+  },
+  {
+    href: '/resume-AurickAnwar.pdf',
+    label: 'Resume',
+    caption: 'resume',
+    icon: '/Resume.png',
+  },
+  {
+    href: 'https://github.com/007Aurick',
+    label: 'GitHub',
+    caption: 'github',
+    icon: '/Github.png',
+  },
+];
 
 const Home = () => {
   return (
@@ -41,49 +61,25 @@ const Home = () => {
             <p className="home-description">
               Passionate about building AI, Robotics and Automation based solutions.
             </p>
-            <div className="home-buttons">
-              <Link to="/projects" className="btn">
-                View My Work
-              </Link>
-              <Link to="/contact" className="btn btn-outline">
-                Get In Touch
-              </Link>
-            </div>
           </div>
           <div className="home-image fade-in-up">
             <BatmanHeroPortrait />
           </div>
-        </div>
-        <div className="home-stats fade-in-up">
-          <a
-            href="https://linkedin.com/in/aurick-anwar"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stat-button"
-          >
-            <div className="stat-icon">LinkedIn</div>
-            <p>Connect</p>
-          </a>
-
-          <a
-            href="/resume-AurickAnwar.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stat-button"
-          >
-            <div className="stat-icon">Resume</div>
-            <p>View Resume</p>
-          </a>
-
-          <a
-            href="https://github.com/007Aurick"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stat-button"
-          >
-            <div className="stat-icon">GitHub</div>
-            <p>View Projects</p>
-          </a>
+          <div className="home-stats fade-in-up">
+            {SOCIAL_LINKS.map(({ href, label, caption, icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="home-social-link"
+                aria-label={label}
+              >
+                <img src={icon} alt="" className="home-social-icon" width={32} height={32} />
+                <span className="home-social-caption">{caption}</span>
+              </a>
+            ))}
+          </div>
         </div>
 
         <SpotifySection />

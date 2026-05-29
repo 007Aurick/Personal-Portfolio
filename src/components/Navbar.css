@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap');
 
 .navbar {
   position: fixed;
@@ -6,16 +6,16 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.94);
-  backdrop-filter: blur(10px);
+  background: rgba(6, 8, 12, 0.92);
+  backdrop-filter: blur(12px);
   transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(181, 122, 16, 0.35);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid var(--border-accent);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 .navbar.scrolled {
-  background: rgba(10, 10, 10, 0.98);
-  border-bottom-color: rgba(181, 122, 16, 0.62);
+  background: rgba(6, 8, 12, 0.97);
+  border-bottom-color: rgba(34, 211, 238, 0.4);
 }
 
 .nav-content {
@@ -28,56 +28,57 @@
 }
 
 .nav-logo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  font-family: 'Orbitron', 'Segoe UI', sans-serif;
-  color: #cf9a2b;
-  background: linear-gradient(180deg, #f1d078 0%, #d2a33a 30%, #b67c12 65%, #7a4f0f 100%);
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Orbitron', var(--font-mono);
+  color: var(--accent);
+  background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 50%, var(--accent-deep) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-decoration: none;
-  transition: all 0.3s ease;
-  letter-spacing: 0.1em;
+  transition: filter 0.3s ease;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  text-shadow: 0 0 16px rgba(181, 122, 16, 0.22);
   margin-left: 2.5rem;
-  transform: skewX(-8deg);
 }
 
 .nav-logo:hover {
-  filter: brightness(1.08);
-  text-shadow: 0 0 20px rgba(181, 122, 16, 0.28);
+  filter: brightness(1.15);
 }
 
 .nav-menu {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
 .nav-link {
-  color: #d1d5db;
+  color: var(--text-secondary);
   text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
   position: relative;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.45rem 0.85rem;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: var(--radius-sm);
 }
 
 .nav-link:hover {
-  color: #f7f4ea;
-  background: rgba(181, 122, 16, 0.12);
-  border-color: rgba(181, 122, 16, 0.45);
+  color: var(--text-primary);
+  background: var(--accent-soft);
+  border-color: var(--border-accent);
 }
 
 .nav-link.active {
-  color: #140f04;
-  background: linear-gradient(180deg, #f0ce70 0%, #d5a63c 40%, #b57a10 100%);
-  border-color: #c69326;
+  color: #ecfeff;
+  background: rgba(8, 145, 178, 0.35);
+  border-color: var(--border-accent-strong);
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.12);
 }
 
 .nav-outside-short {
@@ -88,7 +89,7 @@
   .nav-link--outside {
     padding-left: 0.65rem;
     padding-right: 0.65rem;
-    font-size: 0.82rem;
+    font-size: 0.72rem;
   }
 
   .nav-outside-full {
@@ -116,26 +117,25 @@
   cursor: pointer;
   gap: 4px;
   padding: 0.5rem;
-  border: 1px solid rgba(181, 122, 16, 0.4);
-  border-radius: 4px;
-  background: rgba(181, 122, 16, 0.08);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
 }
 
 .nav-toggle:hover {
-  background: rgba(181, 122, 16, 0.18);
+  background: rgba(34, 211, 238, 0.18);
 }
 
 .bar {
   width: 25px;
-  height: 3px;
-  background: #c69326;
+  height: 2px;
+  background: var(--accent);
   transition: all 0.3s ease;
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
 .nav-toggle.active .bar:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
-  background: #f2d477;
 }
 
 .nav-toggle.active .bar:nth-child(2) {
@@ -144,56 +144,46 @@
 
 .nav-toggle.active .bar:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -6px);
-  background: #f2d477;
 }
 
-/* Mobile styles */
 @media (max-width: 768px) {
   .nav-toggle {
     display: flex;
   }
-  
+
   .nav-menu {
     position: fixed;
     top: 70px;
     left: -100%;
     width: 100%;
     height: calc(100vh - 70px);
-    background: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(10px);
+    background: rgba(6, 8, 12, 0.98);
+    backdrop-filter: blur(12px);
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding-top: 2rem;
-    gap: 2rem;
+    gap: 1.25rem;
     transition: left 0.3s ease;
-    border-top: 1px solid rgba(181, 122, 16, 0.45);
+    border-top: 1px solid var(--border-accent);
   }
-  
+
   .nav-menu.active {
     left: 0;
   }
-  
+
   .nav-link {
-    font-size: 1.2rem;
-    padding: 1rem 2rem;
-    border: 1px solid rgba(181, 122, 16, 0.45);
-    border-radius: 4px;
-    background: rgba(181, 122, 16, 0.08);
+    font-size: 0.9rem;
+    padding: 0.85rem 1.5rem;
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-sm);
+    background: rgba(17, 24, 32, 0.8);
     min-width: 200px;
     text-align: center;
-  }
-  
-  .nav-link:hover {
-    background: rgba(181, 122, 16, 0.15);
   }
 
   .nav-logo {
     margin-left: 0;
-    font-size: 1.45rem;
-    letter-spacing: 0.08em;
+    font-size: 1.25rem;
   }
 }
-
-
-
