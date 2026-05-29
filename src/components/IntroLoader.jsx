@@ -12,19 +12,20 @@ const PROGRESS_BAR_WIDTH = 24;
 
 const SCRIPT = [
   {
-    cmd: 'initializing portfolio.',
-    output: '✓ system ready',
+    cmd: 'cd Aurick\'s Portfolio',
+    output: 'website active...',
   },
+ 
   {
-    cmd: 'loading sections.',
-    output: '✓ home  ✓ projects  ✓ contact  ✓ life',
-  },
-  {
-    cmd: 'loading projects.',
+    cmd: 'loading content...',
     type: 'progress',
-    progressLabel: 'LOADING PROJECT ARCHIVES',
+    progressLabel: 'Home, Projects, Contact, Life activated...',
     duration: PROGRESS_MS,
   },
+  {
+    cmd: 'npm start',
+    output: 'SYSTEM READY'
+  }
 ];
 
 function buildProgressBar(percent) {
@@ -154,7 +155,7 @@ const IntroLoader = ({ onComplete }) => {
             label: step.progressLabel ?? 'LOADING PROJECT ARCHIVES',
             percent: 100,
           },
-          { type: 'output', text: 'SYSTEM READY' },
+          
         ]);
         setStepIndex((i) => i + 1);
         setPhase('typing');
