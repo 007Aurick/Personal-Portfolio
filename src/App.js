@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Projects from './components/Projects';
+import ProjectDetail from './components/projects/ProjectDetail';
 import Contact from './components/Contact';
 import OutsideEngineering from './components/OutsideEngineering';
 import IntroLoader from './components/IntroLoader';
@@ -51,6 +52,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/outside-engineering" element={<OutsideEngineering />} />
         </Routes>

@@ -347,14 +347,20 @@
   text-transform: uppercase;
   font-weight: 600;
   transition: all 0.3s ease;
-  margin-top: auto;
   text-decoration: none;
-  align-self: start;
 }
 
-.project-card:hover .project-link {
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: auto;
+}
+
+.project-link:hover {
   box-shadow: 0 0 18px rgba(34, 211, 238, 0.46);
-  transform: scale(1.05);
+  transform: translateY(-1px);
+  border-color: var(--accent-light);
 }
 
 @media (max-width: 768px) {
