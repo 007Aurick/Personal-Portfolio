@@ -23,7 +23,8 @@
   "scripts": {
     "models:sync": "node scripts/sync-hero-models.js",
     "prestart": "node scripts/sync-hero-models.js",
-    "prebuild": "node scripts/sync-hero-models.js",
+    "prebuild": "node scripts/sync-hero-models.js && node scripts/generate-favicons.js",
+    "favicons": "node scripts/generate-favicons.js",
     "start": "craco start",
     "dev:api:local": "node scripts/local-spotify-server.js",
     "dev": "node scripts/dev.js",
@@ -59,6 +60,7 @@
     "autoprefixer": "^10.5.0",
     "concurrently": "^9.2.1",
     "postcss": "^8.5.14",
+    "sharp": "^0.33.5",
     "tailwindcss": "^3.4.19",
     "wait-on": "^8.0.5"
   }

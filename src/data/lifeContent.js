@@ -249,7 +249,7 @@ export const nbaWesternPlayoffs = {
           prediction: 'Spurs in 7',
           actual: null,
           outcome: 'pending',
-          note: 'Next game: May 28 @ 8:30 PM ET',
+          note: 'Next game: May 30 @ 8:00 PM ET',
         },
       ],
     },

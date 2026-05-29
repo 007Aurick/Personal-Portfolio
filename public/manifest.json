@@ -1,0 +1,25 @@
+{
+  "short_name": "Aurick Anwar",
+  "name": "Aurick Anwar — Portfolio",
+  "icons": [
+    {
+      "src": "favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#06080c",
+  "background_color": "#06080c"
+}
