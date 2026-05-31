@@ -247,9 +247,9 @@ export const nbaWesternPlayoffs = {
           id: 'w-r3-1',
           matchup: '(1) Thunder vs (2) Spurs',
           prediction: 'Spurs in 7',
-          actual: null,
-          outcome: 'pending',
-          note: 'Next game: May 30 @ 8:00 PM ET',
+          actual: 'Spurs advance (4-3)',
+          outcome: 'exact',
+       
         },
       ],
     },
@@ -337,6 +337,7 @@ export const nbaFinalsBracket = {
       prediction: 'Spurs in 6',
       actual: null,
       outcome: 'pending',
+      note: 'Next game: June 3rd @ 8:30 PM ET',
     
     },
   ],
