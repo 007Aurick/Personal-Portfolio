@@ -35,15 +35,4 @@ export const workExperience = [
     logoOffsetY: '3px',
     url: 'https://www.macdrones.ca/',
   },
-  {
-    id: 'magnified',
-    company: 'Magnified Systems',
-    role: 'Founding Engineer',
-    location: 'Toronto, Ontario',
-    dates: 'February 2026 – Present',
-    logo: '/MagnifiedSystems.png',
-    logoTheme: 'dark',
-    logoFit: 'cover',
-    url: 'https://www.magnifiedsystems.com/',
-  },
 ];

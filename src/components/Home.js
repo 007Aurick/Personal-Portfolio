@@ -45,18 +45,18 @@ const Home = () => {
             <h3 className="home-subtitle">Engineering Physics @McMaster University</h3>
             <div className="home-role-lines">
               <p>
-                Founding Engineer @{''}
+                ML @{''}
                 <a
-                  href="https://www.magnifiedsystems.com/"
+                  href="https://personalizedprescribing.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="home-role-link"
                 >
-                  Magnified Systems
+                  Personalized Prescribing
                 </a>
               </p>
               <p>
-                SWE Intern @{''}
+                Prev @{''}
                 <a
                   href="https://hermesai.ca/"
                   target="_blank"
