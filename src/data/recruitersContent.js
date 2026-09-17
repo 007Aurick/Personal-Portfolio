@@ -47,7 +47,7 @@ export const RECRUITER_WORK = [
     company: 'Personalized Prescribing',
     role: 'Machine Learning Intern',
     location: 'Richmond Hill, Ontario',
-    dates: 'Incoming Fall 2026',
+    dates: 'September 2026 – Present',
     logo: '/personalized.jpg',
     logoTheme: 'light',
     logoFit: 'contain',
