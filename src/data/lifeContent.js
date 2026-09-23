@@ -12,6 +12,31 @@
 
 export const friends = [
   {
+    id: 'f23',
+    image: '/Friends23.jpg',
+    date: 'September 2026',
+    caption: 'Hack the North',
+    location: 'University of Waterloo',
+    objectPosition: 'center 28%',
+  },
+  {
+    id: 'f22',
+    image: '/Friends22.jpg',
+    date: 'September 2026',
+    caption: 'Bro is trash at darts.',
+    location: 'Waterloo, ON',
+  },
+
+  {
+    id: 'f21',
+    image: '/Friends21.jpg',
+    date: 'September 2026',
+    caption: 'Year 2!',
+    location: 'McMaster University',
+  },
+
+  
+  {
     id: 'f13',
     image: '/Friends18.jpg',
     date: 'June 2026',
