@@ -9,12 +9,12 @@ const rawProjects = [
   {
     id: 14,
     slug: 'nl-robot',
-    title: 'NL-Robot',
+    title: 'NL-Robot (Hack The North 2026)',
     category: 'ROBOTICS',
     year: '2026',
     projectType: 'Hackathon Project',
     description:
-      'Building a simulation where a robot is told what to do in plain English, an LLM turns that into a validated plan, and ROS 2 executes it inside Gazebo with a live 3D web view.',
+      'Upload your URDF file and tell the robot what to do in plain English, and watch it execute the plan in a 3D simulation.',
     image: '/NLRobot.jpg',
     youtubeVideoId: 'https://www.youtube.com/watch?v=3C0IwcF55WU',
     technologies: [
