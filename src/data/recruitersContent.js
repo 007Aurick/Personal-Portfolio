@@ -69,6 +69,22 @@ export const RECRUITER_WORK = [
     hoverPreview: { type: 'hermes' },
   },
   {
+    company: 'McMaster Mars Rover Team',
+    role: 'Software Engineer',
+    location: 'Hamilton, Ontario',
+    dates: 'September 2026 – Present',
+    logo: '/Marsrover.png',
+    logoTheme: 'light',
+    logoFit: 'cover',
+    url: 'https://www.mcmastermarsrover.com/',
+    hoverPreview: {
+      type: 'image',
+      image: '/work-hover/mars-rover.jpg',
+      position: '62% center',
+      overlay: 'light',
+    },
+  },
+  {
     company: 'McMaster Aerial Drone and Robotics Team',
     role: 'Software Engineer',
     location: 'Hamilton, Ontario',

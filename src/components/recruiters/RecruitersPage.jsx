@@ -273,7 +273,7 @@ function ProjectDetailModal({ projects, projectIndex, onNavigate, onClose }) {
 }
 
 function RecruitersWorkLogo({ company, logo, logoFit, logoScale, logoPadding, logoOffsetY, logoTheme }) {
-  const isContain = logoFit === 'contain' || company !== 'Magnified Systems';
+  const isContain = logoFit !== 'cover';
   return (
     <span
       className={`recruiters-work-logo-wrap${

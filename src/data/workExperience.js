@@ -22,6 +22,17 @@ export const workExperience = [
     url: 'https://hermesai.ca/',
   },
   {
+    id: 'mcmaster-mars-rover',
+    company: 'McMaster Mars Rover Team',
+    role: 'Software Engineer',
+    location: 'Hamilton, Ontario',
+    dates: 'September 2026 – Present',
+    logo: '/Marsrover.png',
+    logoTheme: 'light',
+    logoFit: 'cover',
+    url: 'https://www.mcmastermarsrover.com/',
+  },
+  {
     id: 'McMaster Drone',
     company: 'McMaster Aerial Drone and Robotics Team',
     role: 'Software Engineer',
