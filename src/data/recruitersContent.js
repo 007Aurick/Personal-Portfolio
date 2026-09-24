@@ -90,6 +90,7 @@ export const RECRUITER_WORK = [
 ];
 
 const RECRUITER_PROJECT_SLUGS = [
+  'nl-robot',
   'autonomous-self-driving-carla',
   'robot-basketball-shooter',
   'breast-cancer-cell-detection',
@@ -107,11 +108,13 @@ const RECRUITER_PROJECT_SLUGS = [
 
 const RECRUITER_PROJECT_TITLES = {
   'autonomous-self-driving-carla': 'Autonomous Self-Driving Vehicle',
+  'nl-robot': 'NL-Robot',
   telearm: 'TeleARM',
   'robot-basketball-shooter': 'Robot Basketball Shooter',
 };
 
 function getRecruiterCtaLabel(slug) {
+  if (slug === 'nl-robot') return 'View Devpost';
   if (slug === 'vent-buddy') return 'View Project';
   if (slug === 'push-button-led-pcb') return 'Download PCB';
   if (slug === 'scissor-bot') return 'View Report';
