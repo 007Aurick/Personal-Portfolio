@@ -29,7 +29,9 @@ export const workExperience = [
     dates: 'September 2026 – Present',
     logo: '/Marsrover.png',
     logoTheme: 'light',
-    logoFit: 'cover',
+    logoFit: 'contain',
+    logoScale: 1.2,
+    logoPadding: 0,
     url: 'https://www.mcmastermarsrover.com/',
   },
   {
