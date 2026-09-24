@@ -27,7 +27,7 @@ export const workExperience = [
     role: 'Software Engineer',
     location: 'Hamilton, Ontario',
     dates: 'September 2026 – Present',
-    logo: '/Marsrover.png',
+    logo: '/mmrt-logo.png',
     logoTheme: 'light',
     logoFit: 'contain',
     logoScale: 1.2,
