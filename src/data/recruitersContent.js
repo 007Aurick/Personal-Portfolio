@@ -126,7 +126,7 @@ const RECRUITER_PROJECT_SLUGS = [
 
 const RECRUITER_PROJECT_TITLES = {
   'autonomous-self-driving-carla': 'Autonomous Self-Driving Vehicle',
-  'nl-robot': 'NL-Robot',
+  'nl-robot': 'NL-Robot - Hack the North 2026',
   telearm: 'TeleARM',
   'robot-basketball-shooter': 'Robot Basketball Shooter',
 };

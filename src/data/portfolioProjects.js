@@ -9,7 +9,7 @@ const rawProjects = [
   {
     id: 14,
     slug: 'nl-robot',
-    title: 'NL-Robot (Hack The North 2026)',
+    title: 'NL-Robot - Hack the North 2026',
     category: 'ROBOTICS',
     year: '2026',
     projectType: 'Hackathon Project',
