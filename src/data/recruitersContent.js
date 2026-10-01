@@ -31,8 +31,8 @@ export const RECRUITER_INTRO = [
     suffix: '.',
   },
   {
-    text: 'ML at ',
-    link: { label: 'Personalized Prescribing', href: 'https://personalizedprescribing.com/' },
+    text: 'SWE at ',
+    link: { label: 'Magic Hour AI', href: 'https://magichour.ai/' },
     suffix: ' · Prev at ',
     link2: { label: 'HermesAI', href: 'https://hermesai.ca/' },
     suffix2: '.',
@@ -44,20 +44,14 @@ export const RECRUITER_INTRO = [
 
 export const RECRUITER_WORK = [
   {
-    company: 'Personalized Prescribing',
-    role: 'Machine Learning Intern',
-    location: 'Richmond Hill, Ontario',
+    company: 'Magic Hour AI',
+    role: 'Software Engineering Intern',
+    location: 'San Francisco, California',
     dates: 'September 2026 – Present',
-    logo: '/personalized.jpg',
-    logoTheme: 'light',
-    logoFit: 'contain',
-    url: 'https://personalizedprescribing.com/',
-    hoverPreview: {
-      type: 'image',
-      image: '/work-hover/prescribing-banner.png',
-      position: 'center center',
-      overlay: 'light',
-    },
+    logo: '/magichourai.jpg',
+    logoFit: 'cover',
+    url: 'https://magichour.ai/',
+    hoverPreview: { type: 'magichour' },
   },
   {
     company: 'HermesAI',

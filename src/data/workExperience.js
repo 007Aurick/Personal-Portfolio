@@ -1,14 +1,13 @@
 export const workExperience = [
   {
-    id: 'personalized-prescribing',
-    company: 'Personalized Prescribing',
-    role: 'Machine Learning Intern',
-    location: 'Richmond Hill, Ontario',
+    id: 'magic-hour-ai',
+    company: 'Magic Hour AI',
+    role: 'Software Engineering Intern',
+    location: 'San Francisco, California',
     dates: 'September 2026 – Present',
-    logo: '/personalized.jpg',
-    logoTheme: 'light',
-    logoFit: 'contain',
-    url: 'https://personalizedprescribing.com/',
+    logo: '/magichourai.jpg',
+    logoFit: 'cover',
+    url: 'https://magichour.ai/',
   },
   {
     id: 'hermesai',

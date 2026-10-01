@@ -45,14 +45,14 @@ const Home = () => {
             <h3 className="home-subtitle">Engineering Physics @McMaster University</h3>
             <div className="home-role-lines">
               <p>
-                ML @{''}
+                SWE @{''}
                 <a
-                  href="https://personalizedprescribing.com/"
+                  href="https://magichour.ai/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="home-role-link"
                 >
-                  Personalized Prescribing
+                  Magic Hour AI
                 </a>
               </p>
               <p>

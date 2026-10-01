@@ -386,6 +386,100 @@
   display: none;
 }
 
+.recruiters-work-magichour-art {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  padding: 0.55rem 10.5rem 0.55rem 52%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  background:
+    radial-gradient(ellipse 65% 90% at 92% 45%, rgba(99, 102, 241, 0.22) 0%, transparent 58%),
+    linear-gradient(135deg, #060814 0%, #0b1224 48%, #0a1628 100%);
+}
+
+.recruiters-work-magichour-noise {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.35;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(255, 255, 255, 0.03) 1px,
+      rgba(255, 255, 255, 0.03) 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(255, 255, 255, 0.025) 1px,
+      rgba(255, 255, 255, 0.025) 2px
+    ),
+    radial-gradient(circle at 70% 40%, rgba(165, 180, 252, 0.18), transparent 45%);
+  animation: recruiters-magichour-denoise 2.4s ease-in-out infinite alternate;
+}
+
+.recruiters-work-magichour-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.recruiters-work-magichour-kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+}
+
+.recruiters-work-magichour-title {
+  margin: 0.12rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.2;
+}
+
+.recruiters-work-magichour-steps {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.recruiters-work-magichour-arrow {
+  width: 0.7rem;
+  height: 1px;
+  background: linear-gradient(90deg, #6366f1, #c7d2fe);
+  flex-shrink: 0;
+}
+
+@keyframes recruiters-magichour-denoise {
+  from {
+    opacity: 0.5;
+    filter: contrast(1.4) brightness(0.85);
+  }
+  to {
+    opacity: 0.12;
+    filter: contrast(1) brightness(1.1);
+  }
+}
+
 .recruiters-work-body {
   flex: 1;
   min-width: 0;

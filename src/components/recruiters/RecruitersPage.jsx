@@ -336,11 +336,34 @@ function RecruitersHermesHoverArt() {
   );
 }
 
+function RecruitersMagicHourHoverArt() {
+  return (
+    <div className="recruiters-work-magichour-art" aria-hidden="true">
+      <div className="recruiters-work-magichour-noise" />
+      <div className="recruiters-work-magichour-copy">
+        <p className="recruiters-work-magichour-kicker">Diffusion models</p>
+        <p className="recruiters-work-magichour-title">Noise → video</p>
+        <div className="recruiters-work-magichour-steps">
+          <span>Noise</span>
+          <span className="recruiters-work-magichour-arrow" />
+          <span>Latent</span>
+          <span className="recruiters-work-magichour-arrow" />
+          <span>Frame</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function RecruitersWorkHoverPreview({ preview }) {
   if (!preview) return null;
 
   if (preview.type === 'hermes') {
     return <RecruitersHermesHoverArt />;
+  }
+
+  if (preview.type === 'magichour') {
+    return <RecruitersMagicHourHoverArt />;
   }
 
   if (preview.type === 'image' && preview.image) {
