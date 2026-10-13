@@ -167,4 +167,15 @@ export const RECRUITER_PROJECTS = RECRUITER_PROJECT_SLUGS.map((slug) => {
   };
 }).filter(Boolean);
 
-export const RECRUITER_IN_PROGRESS = [];
+export const RECRUITER_IN_PROGRESS = [
+  {
+    id: 'stockfish-irl',
+    title: 'Stockfish IRL',
+    progressPercent: 25,
+    description:
+      'A camera watches a real chessboard, tracks every move with a custom Roboflow RF-DETR model, and uses Stockfish to alert you the instant you blunder.',
+    progressNote:
+      'Trained the Roboflow chess piece detector. Next: move detection and Stockfish blunder alerts.',
+    technologies: ['Roboflow', 'RF-DETR', 'Stockfish', 'OpenCV', 'Python'],
+  },
+];
