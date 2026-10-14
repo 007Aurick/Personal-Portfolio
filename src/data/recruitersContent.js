@@ -171,7 +171,7 @@ export const RECRUITER_IN_PROGRESS = [
   {
     id: 'stockfish-irl',
     title: 'Stockfish IRL',
-    progressPercent: 25,
+    progressPercent: 55,
     description:
       'A camera watches a real chessboard, tracks every move with a custom Roboflow RF-DETR model, and uses Stockfish to alert you the instant you blunder.',
     progressNote:
