@@ -48,8 +48,8 @@ const Contact = () => {
     {
       icon: '✦',
       title: 'Email',
-      value: 'aurick.anwar2260biga@gmail.com',
-      link: 'mailto:aurick.anwar2260biga@gmail.com',
+      value: 'aurick.anwar@gmail.com',
+      link: 'mailto:aurick.anwar@gmail.com',
     },
     {
       icon: '✦',
