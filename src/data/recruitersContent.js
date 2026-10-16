@@ -104,10 +104,11 @@ export const RECRUITER_WORK = [
 const RECRUITER_PROJECT_SLUGS = [
   'nl-robot',
   'autonomous-self-driving-carla',
-  'robot-basketball-shooter',
+  'stockfish-irl',
   'breast-cancer-cell-detection',
-  'vent-buddy',
   'telearm',
+  'robot-basketball-shooter',
+  'vent-buddy',
   'hand-gesture-computer-control',
   'basketball-shot-predictor',
   'google-home-replica',
@@ -121,6 +122,7 @@ const RECRUITER_PROJECT_SLUGS = [
 const RECRUITER_PROJECT_TITLES = {
   'autonomous-self-driving-carla': 'Autonomous Self-Driving Vehicle',
   'nl-robot': 'NL-Robot - Hack the North 2026',
+  'stockfish-irl': 'Stockfish IRL',
   telearm: 'TeleARM',
   'robot-basketball-shooter': 'Robot Basketball Shooter',
 };
@@ -167,15 +169,4 @@ export const RECRUITER_PROJECTS = RECRUITER_PROJECT_SLUGS.map((slug) => {
   };
 }).filter(Boolean);
 
-export const RECRUITER_IN_PROGRESS = [
-  {
-    id: 'stockfish-irl',
-    title: 'Stockfish IRL',
-    progressPercent: 55,
-    description:
-      'A camera watches a real chessboard, tracks every move with a custom Roboflow RF-DETR model, and uses Stockfish to alert you the instant you blunder.',
-    progressNote:
-      'Trained the Roboflow chess piece detector. Next: move detection and Stockfish blunder alerts.',
-    technologies: ['Roboflow', 'RF-DETR', 'Stockfish', 'OpenCV', 'Python'],
-  },
-];
+export const RECRUITER_IN_PROGRESS = [];
