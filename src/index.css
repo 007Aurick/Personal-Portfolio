@@ -59,6 +59,6 @@ a {
 }
 
 ::selection {
-  background: var(--accent-soft);
-  color: var(--text);
+  background: #2f80ff;
+  color: #fff;
 }
