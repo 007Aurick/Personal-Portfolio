@@ -19,6 +19,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>Aurick Anwar</title>
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('aurick-theme') === 'carbon') {
+            document.documentElement.setAttribute('data-theme', 'carbon');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

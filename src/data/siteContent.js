@@ -21,18 +21,9 @@ export const SITE_SOCIAL = [
   },
 ];
 
-export const SITE_SKILLS = [
-  'Python',
-  'C/C++',
-  'ROS',
-  'Computer Vision',
-  'Embedded Systems',
-  'AI/ML',
-];
-
 export const SITE_ABOUT = {
   name: 'Aurick Anwar',
-  school: 'Engineering Physics @ McMaster',
+  school: 'Engineering Physics @ McMaster University',
   schoolHref: 'https://www.mcmaster.ca/',
   location: 'Hamilton, Ontario',
   blurb: 'I build ML, robotics and computer vision pipelines.',

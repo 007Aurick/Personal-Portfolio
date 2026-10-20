@@ -116,8 +116,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  /* Monochrome black icons on light theme */
-  filter: brightness(0);
+  filter: var(--icon-filter);
 }
 
 .home-social--linkedin {
@@ -133,6 +132,21 @@
   color: var(--text-secondary);
   line-height: 1.55;
   margin: 0;
+}
+
+.home-currently {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.home-currently-label {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .home-about-bullets {
@@ -163,32 +177,13 @@
   background: var(--accent);
 }
 
-.home-skills {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0;
-  padding: 0;
-}
-
-.home-skills li {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  background: #eef0f4;
-  border: 1px solid transparent;
-  padding: 0.32rem 0.7rem;
-  border-radius: 999px;
-}
-
 .home-photo-frame {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--bg-raised);
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--photo-shadow);
   width: 100%;
   min-width: 0;
   align-self: stretch;
@@ -277,7 +272,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  box-shadow: var(--card-shadow);
 }
 
 .home-card-title {
@@ -419,7 +414,7 @@
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--border);
-  background: #eef0f4;
+  background: var(--media);
   flex-shrink: 0;
 }
 
@@ -468,7 +463,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: brightness(0);
+  filter: var(--icon-filter);
 }
 
 .home-project-line {

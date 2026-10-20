@@ -30,6 +30,37 @@
   gap: 1.1rem;
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.05rem;
+  height: 2.05rem;
+  margin-right: 0.15rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--chip);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.theme-toggle svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+[data-theme='carbon'] .theme-toggle {
+  background: #2a2a28;
+  border-color: transparent;
+  color: #d7d4cc;
+}
+
 .site-nav-link {
   display: inline-flex;
   align-items: center;

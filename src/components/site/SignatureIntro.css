@@ -8,7 +8,7 @@
   z-index: 10000;
   display: grid;
   place-items: center;
-  background: #f4f7fb;
+  background: var(--bg);
   opacity: 1;
   transition: opacity 560ms ease;
 }
@@ -25,13 +25,13 @@
 }
 
 .sig-letter {
-  fill: #121826;
+  fill: var(--text);
   clip-path: inset(0 100% 0 0);
 }
 
 .sig-letter--pen {
   fill: none;
-  stroke: #121826;
+  stroke: var(--text);
   stroke-width: 9.4;
   stroke-linecap: round;
   stroke-linejoin: round;

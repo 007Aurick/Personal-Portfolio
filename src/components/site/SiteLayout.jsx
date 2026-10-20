@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { RESUME_PDF } from '../../data/siteContent';
+import ThemeSwitch from './ThemeSwitch';
 import './SiteLayout.css';
 
 export default function SiteLayout({ children }) {
@@ -11,6 +12,7 @@ export default function SiteLayout({ children }) {
           AA
         </Link>
         <nav className="site-nav" aria-label="Primary">
+          <ThemeSwitch />
           <NavLink
             to="/projects"
             end

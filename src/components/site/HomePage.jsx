@@ -5,7 +5,6 @@ import {
   SITE_ABOUT,
   SITE_EMAIL,
   SITE_PROJECTS,
-  SITE_SKILLS,
   SITE_SOCIAL,
   SITE_WORK,
 } from '../../data/siteContent';
@@ -215,18 +214,15 @@ export default function HomePage() {
               </span>
             </div>
             <p className="home-blurb">{SITE_ABOUT.blurb}</p>
-            <ul className="home-about-bullets">
-              {SITE_ABOUT.bullets.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <div className="home-currently">
+              <p className="home-currently-label">Currently:</p>
+              <ul className="home-about-bullets">
+                {SITE_ABOUT.bullets.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-
-          <ul className="home-skills" aria-label="Skills">
-            {SITE_SKILLS.map((skill) => (
-              <li key={skill}>{skill}</li>
-            ))}
-          </ul>
         </div>
 
         <div className="home-photo-frame">
