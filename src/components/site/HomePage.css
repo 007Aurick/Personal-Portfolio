@@ -260,7 +260,7 @@
 }
 
 .home-bottom {
-  align-items: stretch;
+  align-items: start;
 }
 
 .home-card {
@@ -273,6 +273,11 @@
   display: flex;
   flex-direction: column;
   box-shadow: var(--card-shadow);
+}
+
+.home-bottom .home-card--work {
+  height: auto;
+  align-self: start;
 }
 
 .home-card-title {
@@ -500,7 +505,6 @@
 
 .home-project-panel {
   padding: 0 0 1rem;
-  padding-left: calc(72px + 0.75rem);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -598,10 +602,6 @@
   .home-project-thumb {
     width: 64px;
     height: 44px;
-  }
-
-  .home-project-panel {
-    padding-left: 0;
   }
 
   .home-project-actions {

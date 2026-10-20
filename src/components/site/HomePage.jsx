@@ -236,7 +236,7 @@ export default function HomePage() {
       </section>
 
       <div className="home-bottom">
-        <section className="home-card" aria-labelledby="work-heading">
+        <section className="home-card home-card--work" aria-labelledby="work-heading">
           <h2 id="work-heading" className="home-card-title">
             <svg className="home-card-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path
