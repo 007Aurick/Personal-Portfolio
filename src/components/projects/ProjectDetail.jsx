@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { getProjectBySlug, getProjectMediaImages } from '../../data/portfolioProjects';
 import YouTubeLoop from './YouTubeLoop';
+import SiteLayout from '../site/SiteLayout';
 import './ProjectDetail.css';
 
 function toBullets(value) {
@@ -38,7 +39,7 @@ function ProjectDetailGallery({ images }) {
   if (!images?.length) return null;
 
   return (
-    <div className="project-detail__gallery fade-in-up">
+    <div className="project-detail__gallery">
       {images.map(({ src, alt, caption }) => (
         <figure key={`${src}-${caption}`} className="project-detail__gallery-item">
           <img src={src} alt={alt ?? ''} loading="lazy" />
@@ -55,10 +56,13 @@ const ProjectDetail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [slug]);
+    if (project) {
+      document.title = `${project.title} — Aurick Anwar`;
+    }
+  }, [slug, project]);
 
   if (!project) {
-    return <Navigate to="/projects" replace />;
+    return <Navigate to="/" replace />;
   }
 
   const showCta = !project.hideCta && project.projectUrl;
@@ -71,16 +75,16 @@ const ProjectDetail = () => {
     : { target: '_blank', rel: 'noopener noreferrer' };
 
   return (
-    <section className="project-detail section">
-      <div className="container project-detail__container">
-        <Link to="/projects" className="project-detail__back fade-in-up">
-          ← Back to Projects
+    <SiteLayout>
+      <article className="project-detail">
+        <Link to="/projects" className="project-detail__back">
+          ← Back
         </Link>
 
         {mediaImages ? (
           <ProjectDetailGallery images={mediaImages} />
         ) : (
-          <div className="project-detail__hero fade-in-up">
+          <div className="project-detail__hero">
             {project.youtubeVideoId ? (
               <YouTubeLoop
                 videoId={project.youtubeVideoId}
@@ -96,7 +100,7 @@ const ProjectDetail = () => {
           </div>
         )}
 
-        <div className="project-detail__layout fade-in-up">
+        <div className="project-detail__layout">
           <aside className="project-detail__sidebar">
             <p className="project-detail__category">{project.category}</p>
             <h1 className="project-detail__title">{project.title}</h1>
@@ -116,14 +120,14 @@ const ProjectDetail = () => {
             {(showCta || project.secondaryUrl) && (
               <div className="project-detail__sidebar-actions">
                 {showCta && (
-                  <a href={project.projectUrl} className="btn" {...ctaProps}>
+                  <a href={project.projectUrl} className="project-detail__cta" {...ctaProps}>
                     {ctaLabel}
                   </a>
                 )}
                 {project.secondaryUrl && (
                   <a
                     href={project.secondaryUrl}
-                    className="btn project-detail__btn-secondary"
+                    className="project-detail__cta project-detail__cta--secondary"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -160,8 +164,8 @@ const ProjectDetail = () => {
             </DetailSection>
           </div>
         </div>
-      </div>
-    </section>
+      </article>
+    </SiteLayout>
   );
 };
 

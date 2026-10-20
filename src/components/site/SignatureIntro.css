@@ -1,0 +1,62 @@
+.sig-lock {
+  overflow: hidden;
+}
+
+.sig-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  background: #f4f7fb;
+  opacity: 1;
+  transition: opacity 560ms ease;
+}
+
+.sig-intro.is-done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sig-intro-svg {
+  width: min(86vw, 920px);
+  height: auto;
+  overflow: visible;
+}
+
+.sig-letter {
+  fill: #121826;
+  clip-path: inset(0 100% 0 0);
+}
+
+.sig-letter--pen {
+  fill: none;
+  stroke: #121826;
+  stroke-width: 9.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sig-letter.is-drawing {
+  animation-name: sig-write;
+  animation-timing-function: cubic-bezier(0.22, 0.06, 0.16, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes sig-write {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .sig-intro-svg {
+    width: min(92vw, 920px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sig-intro {
+    display: none;
+  }
+}

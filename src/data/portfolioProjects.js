@@ -29,8 +29,8 @@ const rawProjects = [
       'Anthropic API',
       'Docker',
     ],
-    projectUrl: 'https://devpost.com/software/morph-pavn81',
-    ctaLabel: 'View Devpost',
+    projectUrl: 'https://github.com/007Aurick/NL-ROBOT',
+    ctaLabel: 'View GitHub',
     overview: [
       'Built an end-to-end robot testing workspace that replaces hand-written ros2 topic commands with a natural-language command box.',
       'Combined a Next.js and Three.js viewport, a FastAPI bridge, and a real ROS 2 graph so plans run on the same interfaces used on hardware.',
@@ -70,7 +70,7 @@ const rawProjects = [
     id: 1,
     slug: 'autonomous-self-driving-carla',
     title: 'Autonomous Self-Driving Vehicle with CARLA',
-    category: 'AUTONOMOUS SYSTEMS',
+    category: 'Computer Vision',
     year: '2026',
     description: 'Developing an autonomous driving dashboard in CARLA that performs real-time object detection and decision making.',
     image: '/SelfDriving.png',
@@ -173,7 +173,7 @@ const rawProjects = [
     id: 10,
     slug: 'breast-cancer-cell-detection',
     title: 'Breast Cancer Cell Detection',
-    category: 'COMPUTER VISION',
+    category: 'Machine Learning',
     year: '2026',
     projectType: 'Solo Project',
     description:
@@ -324,7 +324,7 @@ const rawProjects = [
     id: 11,
     slug: 'vent-buddy',
     title: 'Vent Buddy',
-    category: 'ARTIFICIAL INTELLIGENCE',
+    category: 'LLM Applications',
     year: '2026',
     projectType: 'Solo Project',
     description:
@@ -729,10 +729,23 @@ const rawProjects = [
   },
 ];
 
-export const portfolioProjects = rawProjects.map((project) => ({
-  ...project,
-  youtubeVideoId: parseYouTubeId(project.youtubeVideoId),
-}));
+/** Dropped from public site (All Projects + recruiters). */
+const HIDDEN_PROJECT_SLUGS = new Set([
+  'basketball-shot-predictor',
+  'google-home-replica',
+  'facial-recognition',
+  'car-pedestrian-detection',
+  'push-button-led-pcb',
+  'scissor-bot',
+  'arduino-smart-home',
+]);
+
+export const portfolioProjects = rawProjects
+  .filter((project) => !HIDDEN_PROJECT_SLUGS.has(project.slug))
+  .map((project) => ({
+    ...project,
+    youtubeVideoId: parseYouTubeId(project.youtubeVideoId),
+  }));
 
 export function getProjectBySlug(slug) {
   return portfolioProjects.find((p) => p.slug === slug) ?? null;

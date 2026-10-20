@@ -110,13 +110,6 @@ const RECRUITER_PROJECT_SLUGS = [
   'robot-basketball-shooter',
   'vent-buddy',
   'hand-gesture-computer-control',
-  'basketball-shot-predictor',
-  'google-home-replica',
-  'facial-recognition',
-  'car-pedestrian-detection',
-  'push-button-led-pcb',
-  'scissor-bot',
-  'arduino-smart-home',
 ];
 
 const RECRUITER_PROJECT_TITLES = {
@@ -128,10 +121,8 @@ const RECRUITER_PROJECT_TITLES = {
 };
 
 function getRecruiterCtaLabel(slug) {
-  if (slug === 'nl-robot') return 'View Devpost';
+  if (slug === 'nl-robot') return 'View GitHub';
   if (slug === 'vent-buddy') return 'View Project';
-  if (slug === 'push-button-led-pcb') return 'Download PCB';
-  if (slug === 'scissor-bot') return 'View Report';
   return 'View GitHub';
 }
 

@@ -1,119 +1,29 @@
-import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import Projects from './components/Projects';
+import React, { useCallback, useState } from 'react';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
+import HomePage from './components/site/HomePage';
+import ResumePage from './components/site/ResumePage';
+import AllProjectsPage from './components/site/AllProjectsPage';
 import ProjectDetail from './components/projects/ProjectDetail';
-import Contact from './components/Contact';
-import OutsideEngineering from './components/OutsideEngineering';
-import CustomCursor from './components/CustomCursor';
+import SignatureIntro, { shouldPlaySignatureIntro } from './components/site/SignatureIntro';
 import './App.css';
 
-const SuitAssemblyIntro = lazy(() => import('./components/SuitAssemblyIntro'));
-const RecruitersPage = lazy(() => import('./components/recruiters/RecruitersPage'));
-
-function revealAnimatedSections() {
-  const animated = document.querySelectorAll('.fade-in, .fade-in-up');
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -5% 0px' }
-  );
-
-  animated.forEach((node) => {
-    observer.observe(node);
-    const rect = node.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
-      node.classList.add('in-view');
-      observer.unobserve(node);
-    }
-  });
-
-  return () => observer.disconnect();
-}
-
-function AppContent() {
-  const location = useLocation();
-  const isRecruiters = location.pathname === '/recruiters';
-  const [showIntro, setShowIntro] = useState(!isRecruiters);
-
-  useEffect(() => {
-    if (isRecruiters || showIntro) {
-      return undefined;
-    }
-
-    let disconnect = () => {};
-    const frame = requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        disconnect = revealAnimatedSections();
-      });
-    });
-
-    return () => {
-      cancelAnimationFrame(frame);
-      disconnect();
-    };
-  }, [location.pathname, showIntro, isRecruiters]);
-
-  const handleIntroComplete = useCallback(() => {
-    setShowIntro(false);
-  }, []);
-
-  if (isRecruiters) {
-    return (
-      <Suspense fallback={null}>
-        <RecruitersPage />
-      </Suspense>
-    );
-  }
-
-  return (
-    <>
-      <AnimatePresence>
-        {showIntro && (
-          <Suspense fallback={null}>
-            <SuitAssemblyIntro onComplete={handleIntroComplete} />
-          </Suspense>
-        )}
-      </AnimatePresence>
-      <CustomCursor active={!showIntro} />
-
-      <motion.div
-        className="App"
-        initial={false}
-        animate={{
-          opacity: showIntro ? 0 : 1,
-          y: showIntro ? 8 : 0,
-        }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        aria-hidden={showIntro}
-        style={{ pointerEvents: showIntro ? 'none' : 'auto' }}
-      >
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:slug" element={<ProjectDetail />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/outside-engineering" element={<OutsideEngineering />} />
-        </Routes>
-      </motion.div>
-    </>
-  );
-}
-
 function App() {
+  const [showIntro, setShowIntro] = useState(shouldPlaySignatureIntro);
+  const finishIntro = useCallback(() => setShowIntro(false), []);
+
   return (
     <Router>
-      <AppContent />
+      {showIntro && <SignatureIntro onDone={finishIntro} />}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/resume" element={<ResumePage />} />
+        <Route path="/projects" element={<AllProjectsPage />} />
+        <Route path="/projects/:slug" element={<ProjectDetail />} />
+        <Route path="/recruiters" element={<Navigate to="/" replace />} />
+        <Route path="/contact" element={<Navigate to="/" replace />} />
+        <Route path="/outside-engineering" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </Router>
   );
 }
