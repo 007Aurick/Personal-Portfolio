@@ -13,6 +13,31 @@ import './HomePage.css';
 
 const CALLOUT = "that's me lol";
 
+const WORK_MONTHS = {
+  Jan: '01',
+  Feb: '02',
+  Mar: '03',
+  Apr: '04',
+  May: '05',
+  Jun: '06',
+  Jul: '07',
+  Aug: '08',
+  Sep: '09',
+  Oct: '10',
+  Nov: '11',
+  Dec: '12',
+};
+
+function timelineDate(value) {
+  const formatPart = (part) => {
+    if (/present/i.test(part)) return 'present';
+    const [month, year] = part.trim().split(' ');
+    return `${year}.${WORK_MONTHS[month] || month}`;
+  };
+  const [start, end] = value.split('—');
+  return `${formatPart(start)} – ${formatPart(end || '')}`;
+}
+
 function AboutCallout() {
   const [text, setText] = useState('');
   const reduceMotion =
@@ -275,30 +300,29 @@ export default function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span
-                  className={`home-work-logo${
-                    entry.logoTheme === 'light' ? ' home-work-logo--light' : ''
-                  }`}
-                >
-                  <img
-                    src={entry.logo}
-                    alt=""
-                    style={{
-                      objectFit: entry.logoFit === 'contain' ? 'contain' : 'cover',
-                      transform: entry.logoScale ? `scale(${entry.logoScale})` : undefined,
-                    }}
-                  />
-                </span>
-                <span className="home-work-body">
-                  <span className="home-work-main">
-                    <span className="home-work-role">{entry.role}</span>
+                <span className="home-work-dates">{timelineDate(entry.datesCompact)}</span>
+                <span className="home-work-row">
+                  <span
+                    className={`home-work-logo${
+                      entry.logoTheme === 'light' ? ' home-work-logo--light' : ''
+                    }`}
+                  >
+                    <img
+                      src={entry.logo}
+                      alt=""
+                      style={{
+                        objectFit: entry.logoFit === 'contain' ? 'contain' : 'cover',
+                        transform: entry.logoScale ? `scale(${entry.logoScale})` : undefined,
+                      }}
+                    />
+                  </span>
+                  <span className="home-work-role">
+                    {entry.role}
+                    <span className="home-work-at"> @ </span>
                     <span className="home-work-company">{entry.company}</span>
                   </span>
-                  <span className="home-work-meta">
-                    <span className="home-work-dates">{entry.datesCompact}</span>
-                    <span className="home-work-location">{entry.location}</span>
-                  </span>
                 </span>
+                <span className="home-work-location">{entry.location}</span>
               </a>
             ))}
           </div>
