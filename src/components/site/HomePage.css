@@ -137,7 +137,11 @@
 .home-currently {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.2rem;
+}
+
+.home-previously {
+  margin-top: 0.35rem;
 }
 
 .home-currently-label {
@@ -155,7 +159,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.15rem;
 }
 
 .home-about-bullets li {
@@ -163,7 +167,7 @@
   padding-left: 0.95rem;
   font-size: 0.88rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.35;
 }
 
 .home-about-bullets li::before {
@@ -179,17 +183,48 @@
 
 .home-photo-frame {
   position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--bg-raised);
-  box-shadow: var(--photo-shadow);
   width: 100%;
   min-width: 0;
-  align-self: stretch;
-  /* Follow the text column so the photo can't open a gap under the skills. */
-  height: 0;
-  min-height: 100%;
+  align-self: start;
+  aspect-ratio: 4 / 3;
+  border-radius: 3px;
+  border: 1px solid #9c8f7e;
+  background: linear-gradient(145deg, #f6f1e8 0%, #e6ddd0 30%, #cbbba6 58%, #b5a692 82%, #e4dacb 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -2px 4px rgba(72, 54, 34, 0.28),
+    0 14px 28px rgba(17, 17, 17, 0.14);
+}
+
+.home-photo-mat {
+  position: absolute;
+  inset: 0.62rem;
+  background: #f6f3ec;
+  box-shadow:
+    inset 0 0 0 1px rgba(92, 76, 58, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.home-photo-stage {
+  position: absolute;
+  inset: 0.72rem;
+  overflow: hidden;
+  background: #f6f3ec;
+  box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.35);
+}
+
+[data-theme='carbon'] .home-photo-frame {
+  border-color: #3d3b37;
+  background: linear-gradient(145deg, #45423d 0%, #2e2c29 36%, #1c1b19 70%, #35332f 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.45),
+    0 14px 28px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme='carbon'] .home-photo-mat,
+[data-theme='carbon'] .home-photo-stage {
+  background: #121211;
 }
 
 .home-photo {
@@ -199,7 +234,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 70% 42%;
+  opacity: 0;
+  transition: opacity 1100ms ease;
+}
+
+.home-photo.is-active {
+  opacity: 1;
+}
+
+.home-callout-slot {
+  opacity: 0;
+  transition: opacity 1100ms ease;
+}
+
+.home-callout-slot.is-on {
+  opacity: 1;
 }
 
 .home-callout {

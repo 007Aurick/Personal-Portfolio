@@ -30,7 +30,11 @@ export const SITE_ABOUT = {
   bullets: [
     'Building diffusion models at Magic Hour AI: upscalers, edits, and video pipelines on real GPUs.',
     'Building ROS 2 autonomy for Mars Rover and drone teams, from perception and localization to full sim stacks.',
+    '2nd year Engineering Physics, focused on AI, robotics, and embedded systems.',
     'Seeking summer 2027 internships',
+  ],
+  previously: [
+    'Building LLMs at HermesAI: chatbot features for Canadian Lawyers',
   ],
   heroImage: '/hero.jpg',
 };

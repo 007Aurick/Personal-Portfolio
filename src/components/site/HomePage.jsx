@@ -38,6 +38,55 @@ function timelineDate(value) {
   return `${formatPart(start)} – ${formatPart(end || '')}`;
 }
 
+const HERO_PHOTOS = [
+  {
+    src: '/hero.jpg',
+    alt: 'Aurick Anwar at Hack the North',
+    position: '70% 42%',
+  },
+  {
+    src: '/SF.jpg',
+    alt: 'Aurick Anwar at the Golden Gate Bridge',
+    position: 'center 40%',
+  },
+];
+
+function HeroFrame() {
+  const [index, setIndex] = useState(0);
+  const reduceMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  useEffect(() => {
+    if (reduceMotion) return undefined;
+    const id = window.setInterval(() => {
+      setIndex((current) => (current + 1) % HERO_PHOTOS.length);
+    }, 5600);
+    return () => window.clearInterval(id);
+  }, [reduceMotion]);
+
+  return (
+    <div className="home-photo-frame">
+      <div className="home-photo-mat">
+        <div className="home-photo-stage">
+          {HERO_PHOTOS.map((photo, photoIndex) => (
+            <img
+              key={photo.src}
+              src={photo.src}
+              alt={photo.alt}
+              className={`home-photo${photoIndex === index ? ' is-active' : ''}`}
+              style={{ objectPosition: photo.position }}
+            />
+          ))}
+          <div className={`home-callout-slot${index === 0 ? ' is-on' : ''}`}>
+            <AboutCallout />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function AboutCallout() {
   const [text, setText] = useState('');
   const reduceMotion =
@@ -247,17 +296,18 @@ export default function HomePage() {
                 ))}
               </ul>
             </div>
+            <div className="home-currently home-previously">
+              <p className="home-currently-label">Previously:</p>
+              <ul className="home-about-bullets">
+                {SITE_ABOUT.previously.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className="home-photo-frame">
-          <img
-            src={SITE_ABOUT.heroImage}
-            alt="Aurick Anwar"
-            className="home-photo"
-          />
-          <AboutCallout />
-        </div>
+        <HeroFrame />
       </section>
 
       <div className="home-bottom">
