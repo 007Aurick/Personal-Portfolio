@@ -7,6 +7,60 @@ import { parseYouTubeId } from '../utils/youtube';
 
 const rawProjects = [
   {
+    id: 16,
+    slug: 'magnusbot',
+    title: 'MagnusBot - Cal Hacks 13.0',
+    category: 'ROBOTICS',
+    year: '2026',
+    projectType: 'Hackathon Project',
+    description:
+      'Turns a Chess.com game into over-the-board chess: vision reads your moves, and two robot arms play the opponent back on a real board.',
+    image: '/Chess.jpg',
+    imageObjectPosition: 'center 62%',
+    technologies: [
+      'LeRobot',
+      'RF-DETR',
+      'Roboflow',
+      'OpenCV',
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Claude',
+    ],
+    projectUrl: 'https://devpost.com/software/magnusbot',
+    ctaLabel: 'View Devpost',
+    overview: [
+      'Built at Cal Hacks 13.0 so a Chess.com game can be played on a physical board and still count toward rating.',
+      'You sit at a real board and move real pieces. A vision model records the move and plays it on Chess.com, then two robot arms play the opponent’s reply.',
+      'Chose Chess.com after asking 80 players at the hackathon which site they use. 71 said Chess.com.',
+    ],
+    challenge: [
+      'The vision model is the whole system. A missed piece or a wrong square becomes a bad move, a bad arm path, and a broken game.',
+      'Neither SO-101 arm can reach the full board, so moves that cross the middle have to be handed from one arm to the other.',
+      'Chess.com renders the board in the client, so the live game cannot be read from a simple response.',
+    ],
+    solution: [
+      'Trained an RF-DETR detector in Roboflow on 436 images, including frames where pieces in view are off the board and should stay unlabeled. Ran the weights locally.',
+      'Calibrated the four corners with OpenCV, projected a square grid, and recorded a move from the piece that left a square and the piece that arrived.',
+      'Split the board between two SO-101 arms in LeRobot, with analytic inverse kinematics and a hand-off zone. Each arm was camera-calibrated from a green fingertip, with a grasp angle and grip strength per piece.',
+      'Screenshotted the Chess.com board and skipped unchanged frames with a 0.1% byte difference. When the board changed, Claude Vision read the new move, or the page coordinates of the square to click.',
+      'Added a jump back to the same Chess.com game, so the player can finish in the browser if the clock is low or an arm misses.',
+    ],
+    technical: [
+      'Two SO-101 arms on LeRobot, with closed-form inverse kinematics and a hand-off region because each arm only covers half the board.',
+      'RF-DETR trained in Roboflow on about 450 images and run locally from downloaded weights: 98.3% mAP, 97.9% precision, and 99.1% recall.',
+      'OpenCV corner calibration and a projected grid turn a before-and-after detection into a chess move.',
+      'A Next.js app screenshots the board about once a second. A raw buffer compare at a 0.1% byte threshold drops unchanged frames before they reach Claude Vision.',
+      'Used classical motion planning instead of reinforcement learning, so each arm path stays explainable inside a hackathon.',
+    ],
+    outcomes: [
+      'Played Chess.com on a physical board: vision in, arms out, and a path back to the same game in the browser.',
+      'Local weights removed the latency of running detection in the cloud.',
+      'A cheap pixel diff kept vision calls to frames that actually changed.',
+      'Next step is one longer arm so cross-board moves do not need a hand-off, plus tighter calibration and faster servos.',
+    ],
+  },
+  {
     id: 14,
     slug: 'nl-robot',
     title: 'NL-Robot - Hack the North 2026',

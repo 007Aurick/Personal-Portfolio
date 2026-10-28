@@ -102,6 +102,7 @@ export const RECRUITER_WORK = [
 ];
 
 const RECRUITER_PROJECT_SLUGS = [
+  'magnusbot',
   'nl-robot',
   'autonomous-self-driving-carla',
   'stockfish-irl',
@@ -113,6 +114,7 @@ const RECRUITER_PROJECT_SLUGS = [
 ];
 
 const RECRUITER_PROJECT_TITLES = {
+  magnusbot: 'MagnusBot - Cal Hacks 13.0',
   'autonomous-self-driving-carla': 'Autonomous Self-Driving Vehicle',
   'nl-robot': 'NL-Robot - Hack the North 2026',
   'stockfish-irl': 'Stockfish IRL',
@@ -153,7 +155,7 @@ export const RECRUITER_PROJECTS = RECRUITER_PROJECT_SLUGS.map((slug) => {
     youtubeVideoId: project.youtubeVideoId,
     projectUrl: project.projectUrl,
     downloadFilename: project.downloadFilename,
-    ctaLabel: getRecruiterCtaLabel(slug),
+    ctaLabel: project.ctaLabel || getRecruiterCtaLabel(slug),
     secondaryLabel: project.secondaryLabel,
     secondaryUrl: project.secondaryUrl,
     technologies: project.technologies,

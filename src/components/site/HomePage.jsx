@@ -194,15 +194,17 @@ function ProjectItem({ project }) {
           >
             {open ? '−' : '+'}
           </button>
-          <a
-            className="home-project-gh-icon"
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${project.title} on GitHub`}
-          >
-            <img src="/Github.png" alt="" />
-          </a>
+          {project.github && (
+            <a
+              className="home-project-gh-icon"
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${project.title} on GitHub`}
+            >
+              <img src="/Github.png" alt="" />
+            </a>
+          )}
         </div>
       </div>
 

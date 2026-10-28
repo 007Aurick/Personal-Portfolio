@@ -5,6 +5,7 @@ import { portfolioProjects } from '../../data/portfolioProjects';
 import './AllProjectsPage.css';
 
 const CARD_LINES = {
+  magnusbot: 'Plays Chess.com games on a real board with two robot arms.',
   'nl-robot': 'Natural-language robot control in ROS 2 + Gazebo.',
   'autonomous-self-driving-carla': 'Live perception and decision dashboard in CARLA.',
   'stockfish-irl': 'Tracks a real chessboard and flags blunders.',

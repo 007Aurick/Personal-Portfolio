@@ -52,15 +52,19 @@ export const SITE_WORK = workExperience.map((entry) => ({
 }));
 
 export const MAIN_PROJECT_SLUGS = [
+  'magnusbot',
   'nl-robot',
   'autonomous-self-driving-carla',
   'breast-cancer-cell-detection',
-  'telearm',
 ];
 
 const PROJECT_META = {
+  magnusbot: {
+    title: 'MagnusBot - CalHacks 13.0',
+    line: 'Plays Chess.com games on a real board with two robot arms.',
+  },
   'nl-robot': {
-    title: 'NL-Robot',
+    title: 'NL-Robot - Hack the North 2026',
     line: 'Natural-language robot control in ROS 2 + Gazebo.',
     github: 'https://github.com/007Aurick/NL-ROBOT',
   },
@@ -74,11 +78,6 @@ const PROJECT_META = {
     line: 'YOLO + Grad-CAM medical imaging pipeline.',
     github: 'https://github.com/AurickAnwar/Cancer-Cell-Detection',
   },
-  telearm: {
-    title: 'TeleARM',
-    line: 'Autonomous warehouse forklift in ROS 2.',
-    github: 'https://github.com/007Aurick/TeleARM',
-  },
 };
 
 function buildWriteup(project) {
@@ -91,7 +90,9 @@ export const SITE_PROJECTS = MAIN_PROJECT_SLUGS.map((slug) => {
   const project = portfolioProjects.find((p) => p.slug === slug);
   const meta = PROJECT_META[slug];
   if (!project || !meta) return null;
-  const github = meta.github || project.projectUrl;
+  const github =
+    meta.github ||
+    (String(project.projectUrl || '').includes('github.com') ? project.projectUrl : null);
   return {
     slug: project.slug,
     title: meta.title,
