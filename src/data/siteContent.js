@@ -62,6 +62,7 @@ const PROJECT_META = {
   magnusbot: {
     title: 'MagnusBot - CalHacks 13.0',
     line: 'Plays Chess.com games on a real board with two robot arms.',
+    github: 'https://github.com/MightyTMZ/magnus_bot',
   },
   'nl-robot': {
     title: 'NL-Robot - Hack the North 2026',
@@ -92,7 +93,10 @@ export const SITE_PROJECTS = MAIN_PROJECT_SLUGS.map((slug) => {
   if (!project || !meta) return null;
   const github =
     meta.github ||
-    (String(project.projectUrl || '').includes('github.com') ? project.projectUrl : null);
+    [project.projectUrl, project.secondaryUrl].find((url) =>
+      String(url || '').includes('github.com')
+    ) ||
+    null;
   return {
     slug: project.slug,
     title: meta.title,

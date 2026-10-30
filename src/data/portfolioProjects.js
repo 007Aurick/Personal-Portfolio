@@ -17,6 +17,7 @@ const rawProjects = [
       'Turns a Chess.com game into over-the-board chess: vision reads your moves, and two robot arms play the opponent back on a real board.',
     image: '/Chess.jpg',
     imageObjectPosition: 'center 62%',
+    youtubeVideoId: 'https://www.youtube.com/watch?v=v8jfX0UGEMg',
     technologies: [
       'LeRobot',
       'RF-DETR',
@@ -29,6 +30,8 @@ const rawProjects = [
     ],
     projectUrl: 'https://devpost.com/software/magnusbot',
     ctaLabel: 'View Devpost',
+    secondaryLabel: 'View GitHub',
+    secondaryUrl: 'https://github.com/MightyTMZ/magnus_bot',
     overview: [
       'Built at Cal Hacks 13.0 so a Chess.com game can be played on a physical board and still count toward rating.',
       'You sit at a real board and move real pieces. A vision model records the move and plays it on Chess.com, then two robot arms play the opponent’s reply.',
