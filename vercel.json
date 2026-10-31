@@ -7,35 +7,9 @@
       "config": {
         "distDir": "build"
       }
-    },
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "crons": [
-    {
-      "path": "/api/spotify/feed",
-      "schedule": "0 14 * * *"
     }
   ],
   "routes": [
-    {
-      "src": "/api/spotify/feed",
-      "dest": "/api/spotify/feed.js"
-    },
-    {
-      "src": "/api/spotify/current-playing",
-      "dest": "/api/spotify/current-playing.js"
-    },
-    {
-      "src": "/api/spotify/recent-tracks",
-      "dest": "/api/spotify/recent-tracks.js"
-    },
-    {
-      "src": "/api/spotify/top-artists",
-      "dest": "/api/spotify/top-artists.js"
-    },
     {
       "src": "/static/(.*)",
       "dest": "/static/$1",
