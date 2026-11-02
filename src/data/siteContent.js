@@ -25,7 +25,7 @@ export const SITE_ABOUT = {
   name: 'Aurick Anwar',
   school: 'Engineering Physics @ McMaster University',
   schoolHref: 'https://www.mcmaster.ca/',
-  location: 'Hamilton, Ontario',
+  location: 'San Francisco, California',
   blurb: 'I build ML, robotics and computer vision pipelines.',
   bullets: [
     'Building diffusion models at Magic Hour AI: upscalers, edits, and video pipelines on real GPUs.',
