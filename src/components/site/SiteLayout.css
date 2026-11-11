@@ -14,14 +14,34 @@
   justify-content: space-between;
 }
 
-.site-logo {
-  font-family: var(--font-mono);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  color: var(--accent);
+.site-webring {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2rem;
+  color: #ad1229;
+  font: 600 1.05rem/1 system-ui, -apple-system, sans-serif;
+}
+
+.site-webring-link,
+.site-webring-home {
+  color: inherit;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  transition: transform 0.15s ease;
+}
+
+.site-webring-link:hover,
+.site-webring-home:hover {
+  transform: scale(1.12);
+}
+
+.site-webring-home img {
+  display: block;
+  width: 2.25rem;
+  height: 2.25rem;
 }
 
 .site-nav {

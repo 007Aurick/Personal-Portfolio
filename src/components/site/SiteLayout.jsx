@@ -1,16 +1,15 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { RESUME_PDF } from '../../data/siteContent';
 import ThemeSwitch from './ThemeSwitch';
+import WebringEmbed from './WebringEmbed';
 import './SiteLayout.css';
 
 export default function SiteLayout({ children }) {
   return (
     <div className="site-shell">
       <header className="site-header">
-        <Link to="/" className="site-logo" aria-label="Home">
-          AA
-        </Link>
+        <WebringEmbed />
         <nav className="site-nav" aria-label="Primary">
           <ThemeSwitch />
           <NavLink
