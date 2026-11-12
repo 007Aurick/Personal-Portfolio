@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BASE = 'https://mcmaster-webring.vercel.app';
+const BASE = 'https://www.mcmasterwebring.com';
 const USER_ID = 'aurick-anwar';
 const SIZE = 36;
 
