@@ -40,8 +40,8 @@
 
 .site-webring-home img {
   display: block;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: auto;
+  height: 1.75rem;
 }
 
 .site-nav {
