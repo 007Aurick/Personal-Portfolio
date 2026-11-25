@@ -106,6 +106,7 @@ const RECRUITER_PROJECT_SLUGS = [
   'nl-robot',
   'autonomous-self-driving-carla',
   'stockfish-irl',
+  'over-the-shoulder',
   'breast-cancer-cell-detection',
   'telearm',
   'robot-basketball-shooter',
@@ -118,6 +119,7 @@ const RECRUITER_PROJECT_TITLES = {
   'autonomous-self-driving-carla': 'Autonomous Self-Driving Vehicle',
   'nl-robot': 'NL-Robot - Hack the North 2026',
   'stockfish-irl': 'Stockfish IRL',
+  'over-the-shoulder': 'Over the Shoulder',
   telearm: 'TeleARM',
   'robot-basketball-shooter': 'Robot Basketball Shooter',
 };

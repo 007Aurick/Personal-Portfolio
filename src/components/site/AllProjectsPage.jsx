@@ -9,6 +9,7 @@ const CARD_LINES = {
   'nl-robot': 'Natural-language robot control in ROS 2 + Gazebo.',
   'autonomous-self-driving-carla': 'Live perception and decision dashboard in CARLA.',
   'stockfish-irl': 'Tracks a real chessboard and flags blunders.',
+  'over-the-shoulder': 'Grades your work on paper live and projects hints.',
   'breast-cancer-cell-detection': 'YOLO + Grad-CAM tumor detection on mammograms.',
   telearm: 'Autonomous warehouse forklift in ROS 2.',
   'robot-basketball-shooter': 'Unitree G1 free throws in MuJoCo.',
